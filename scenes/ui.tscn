@@ -1,9 +1,45 @@
 [gd_scene format=3 uid="uid://bt55rtkql526s"]
 
-[node name="ui" type="Control" unique_id=826723475]
+[ext_resource type="Script" uid="uid://c8v5spned1usu" path="res://scripts/ui.gd" id="1_nt7q6"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xlq6p"]
+
+[node name="UI" type="CanvasLayer" unique_id=575252215]
+script = ExtResource("1_nt7q6")
+
+[node name="Control" type="Control" parent="." unique_id=2026920316]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BottomDock" type="MarginContainer" parent="Control" unique_id=289328490]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/BottomDock" unique_id=723092847]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/BottomDock/PanelContainer" unique_id=1919982793]
+layout_mode = 2
+
+[node name="PartList" type="HBoxContainer" parent="Control/BottomDock/PanelContainer/MarginContainer" unique_id=670370681]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ThrusterButton" type="Button" parent="Control/BottomDock/PanelContainer/MarginContainer/PartList" unique_id=1873452046]
+layout_mode = 2
+icon = SubResource("CanvasTexture_xlq6p")
+
+[node name="FinButton" type="Button" parent="Control/BottomDock/PanelContainer/MarginContainer/PartList" unique_id=599231636]
+layout_mode = 2
+
+[connection signal="pressed" from="Control/BottomDock/PanelContainer/MarginContainer/PartList/ThrusterButton" to="." method="_on_thruster_button_pressed"]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b5e2tgdgbr1oq"]
+
+[ext_resource type="Script" uid="uid://bgbneim8lwygc" path="res://scripts/thruster.gd" id="1_vbl7p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbct6"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rbct6"]
+
+[node name="thruster" type="Area2D" unique_id=1407142797]
+script = ExtResource("1_vbl7p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1652292058]
+shape = SubResource("RectangleShape2D_rbct6")
+
+[node name="thruster-sprite" type="Sprite2D" parent="CollisionShape2D" unique_id=1566987828]
+scale = Vector2(20, 20)
+texture = SubResource("CanvasTexture_rbct6")

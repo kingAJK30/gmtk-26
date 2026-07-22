@@ -1,3 +1,40 @@
 [gd_scene format=3 uid="uid://baw6pnljev02h"]
 
+[ext_resource type="Script" uid="uid://dspkd44v45211" path="res://scripts/main.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bt55rtkql526s" path="res://scenes/ui.tscn" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://c6guir5jma5c7" path="res://scenes/rocket.tscn" id="2_lnu2h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v756"]
+size = Vector2(761, 113)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rbct6"]
+
 [node name="game" type="Node2D" unique_id=710748681]
+script = ExtResource("1_yqjtg")
+
+[node name="UI" parent="." unique_id=575252215 instance=ExtResource("2_lbhrr")]
+
+[node name="rocket" parent="." unique_id=127320129 instance=ExtResource("2_lnu2h")]
+position = Vector2(306, 467)
+
+[node name="Timer" type="Timer" parent="." unique_id=1852348723]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="Terrain" type="Node2D" parent="." unique_id=341924650]
+
+[node name="Ground" type="StaticBody2D" parent="Terrain" unique_id=1326148381]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ground" unique_id=1134178780]
+position = Vector2(275.5, 676.5)
+shape = SubResource("RectangleShape2D_4v756")
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Ground/CollisionShape2D" unique_id=333131070]
+modulate = Color(0.5409905, 0.5409905, 0.5409905, 1)
+position = Vector2(0.5, 2.9999905)
+scale = Vector2(762, 118.999985)
+texture = SubResource("CanvasTexture_rbct6")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
