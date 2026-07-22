@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c6guir5jma5c7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00dr1"]
+size = Vector2(90, 270)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3341w"]
+
+[node name="rocket" type="RigidBody2D" unique_id=127320129]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=648914525]
+shape = SubResource("RectangleShape2D_00dr1")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=131745624]
+position = Vector2(-3.8146973e-06, -7.6293945e-06)
+scale = Vector2(90, 270)
+texture = SubResource("CanvasTexture_3341w")
