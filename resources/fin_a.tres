@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PartData" format=3 uid="uid://dbqvwrq4tpg5q"]
+
+[ext_resource type="Script" uid="uid://dug2lpgjtu0v" path="res://scripts/part_data.gd" id="1_0swyu"]
+[ext_resource type="Texture2D" uid="uid://cqmh7ek2kpyhp" path="res://assets/textures/RocketParts.png" id="1_oh7r2"]
+[ext_resource type="PackedScene" uid="uid://d2theip2q6oh6" path="res://scenes/fin.tscn" id="2_3srxo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsaoc"]
+atlas = ExtResource("1_oh7r2")
+region = Rect2(41, 8, 10, 15)
+
+[resource]
+script = ExtResource("1_0swyu")
+display_name = "Fin Alpha"
+scene = ExtResource("2_3srxo")
+icon = SubResource("AtlasTexture_rsaoc")
+metadata/_custom_type_script = "uid://dug2lpgjtu0v"
