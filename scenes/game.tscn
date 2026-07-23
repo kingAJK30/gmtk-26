@@ -7,7 +7,14 @@
 [ext_resource type="Shader" uid="uid://d4k6lpyjmjytj" path="res://assets/shaders/stars.gdshader" id="5_dinhu"]
 [ext_resource type="Texture2D" uid="uid://dwtkyuyglfn0h" path="res://assets/textures/icon.svg" id="5_trtic"]
 [ext_resource type="Texture2D" uid="uid://b57tv6tae5f5q" path="res://assets/textures/background/gradient.png" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://rn47iue0t8c8" path="res://scenes/meteors/meteor_large1.tscn" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://cng2vuc6ij2ew" path="res://scenes/meteors/meteor_large2.tscn" id="10_1kice"]
+[ext_resource type="PackedScene" uid="uid://cyrqbcayme3p1" path="res://scenes/meteors/meteor_large3.tscn" id="11_5newe"]
 [ext_resource type="Texture2D" uid="uid://cttncyjsk4olc" path="res://assets/textures/background/stars7.png" id="11_ca42v"]
+[ext_resource type="PackedScene" uid="uid://dnpolrvxk7gwq" path="res://scenes/meteors/meteor_large5.tscn" id="13_bt5mj"]
+[ext_resource type="PackedScene" uid="uid://cxjxf022scmyi" path="res://scenes/meteors/meteor_small1.tscn" id="14_e1j6l"]
+[ext_resource type="PackedScene" uid="uid://c7c6r5d2qeyt0" path="res://scenes/meteors/meteor_small4.tscn" id="17_qnb83"]
+[ext_resource type="PackedScene" uid="uid://bi6txvw7jvudf" path="res://scenes/meteors/meteor_small7.tscn" id="20_sgl2t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v756"]
 size = Vector2(761, 113)
@@ -102,5 +109,26 @@ texture = ExtResource("11_ca42v")
 position = Vector2(307, 150)
 scale = Vector2(2, 2)
 texture = ExtResource("8_gee14")
+
+[node name="meteor_large1" parent="." unique_id=1899251218 instance=ExtResource("9_0tnpc")]
+position = Vector2(362, 420)
+
+[node name="meteor_large2" parent="." unique_id=590045 instance=ExtResource("10_1kice")]
+position = Vector2(370, 443)
+
+[node name="meteor_small1" parent="." unique_id=82581984 instance=ExtResource("14_e1j6l")]
+position = Vector2(350, 438)
+
+[node name="meteor_large3" parent="." unique_id=1680272913 instance=ExtResource("11_5newe")]
+position = Vector2(250, 503)
+
+[node name="meteor_large5" parent="." unique_id=665222965 instance=ExtResource("13_bt5mj")]
+position = Vector2(269, 517)
+
+[node name="meteor_small7" parent="." unique_id=495269915 instance=ExtResource("20_sgl2t")]
+position = Vector2(250, 517)
+
+[node name="meteor_small4" parent="." unique_id=58416507 instance=ExtResource("17_qnb83")]
+position = Vector2(250, 485)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

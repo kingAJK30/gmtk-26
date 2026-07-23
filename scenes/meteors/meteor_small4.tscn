@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c7c6r5d2qeyt0"]
+
+[ext_resource type="Texture2D" uid="uid://domten4rdk77g" path="res://assets/textures/meteors.png" id="1_cyyho"]
+[ext_resource type="Script" uid="uid://cpcmifuirl2k0" path="res://scripts/meteor.gd" id="1_ktowb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5nbux"]
+radius = 4.0
+height = 8.0
+
+[node name="meteor_small4" type="Area2D" unique_id=1899251218]
+script = ExtResource("1_ktowb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=650025452]
+texture = ExtResource("1_cyyho")
+region_enabled = true
+region_rect = Rect2(72, 19, 20, 19)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1650157894]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_5nbux")
