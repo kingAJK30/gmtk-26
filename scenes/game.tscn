@@ -1,22 +1,51 @@
 [gd_scene format=3 uid="uid://baw6pnljev02h"]
 
 [ext_resource type="Script" uid="uid://dspkd44v45211" path="res://scripts/main.gd" id="1_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://dwtkyuyglfn0h" path="res://assets/textures/icon.svg" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://bt55rtkql526s" path="res://scenes/ui.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://c6guir5jma5c7" path="res://scenes/rocket.tscn" id="2_lnu2h"]
+[ext_resource type="Shader" uid="uid://bf2aiutddfy3n" path="res://scenes/space.gdshader" id="4_kvuet"]
+[ext_resource type="Shader" uid="uid://d4k6lpyjmjytj" path="res://assets/shaders/stars.gdshader" id="5_dinhu"]
+[ext_resource type="Texture2D" uid="uid://dwtkyuyglfn0h" path="res://assets/textures/icon.svg" id="5_trtic"]
+[ext_resource type="Texture2D" uid="uid://b57tv6tae5f5q" path="res://assets/textures/background/gradient.png" id="8_gee14"]
+[ext_resource type="Texture2D" uid="uid://cttncyjsk4olc" path="res://assets/textures/background/stars7.png" id="11_ca42v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v756"]
 size = Vector2(761, 113)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_rbct6"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pm3q5"]
+shader = ExtResource("4_kvuet")
+shader_parameter/background_color = Color(0.013600001, 0.026880002, 0.08, 1)
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/density = 0.9999999747
+shader_parameter/layer_parascale = 4
+shader_parameter/star_speed = Vector2(0, 0)
+shader_parameter/star_wave = Vector2(0, 0)
+shader_parameter/star_size = 0.999999977648
+shader_parameter/star_rotate_speed = 0.5
+shader_parameter/twinkle_effect = 0.6
+shader_parameter/twinkle_speed = 0.3
+shader_parameter/pixelate_enabled = false
+shader_parameter/pixelate_count = 1000.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trtic"]
+shader = ExtResource("5_dinhu")
+shader_parameter/g_random_seed = 0.0
+shader_parameter/g_grid_size = Vector2(16, 9)
+shader_parameter/g_cell_offset = Vector2(0, 0)
+shader_parameter/g_speed = Vector2(0, 0)
+shader_parameter/g_draw_size_min = 1.0
+shader_parameter/g_draw_size_max = 1.0
+shader_parameter/tex_draw = ExtResource("11_ca42v")
+shader_parameter/g_color_a = Color(1, 1, 1, 0)
+shader_parameter/g_color_b = Color(1, 1, 1, 1)
+shader_parameter/g_rot_global_speed = 0.01
+shader_parameter/g_rot_min_speed = 0.1
+shader_parameter/g_rot_max_speed = 1.0
+
 [node name="game" type="Node2D" unique_id=710748681]
 script = ExtResource("1_yqjtg")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2051779844]
-position = Vector2(296, 251.99997)
-scale = Vector2(10.230469, 10.085937)
-texture = ExtResource("2_iywne")
 
 [node name="UI" parent="." unique_id=575252215 instance=ExtResource("2_lbhrr")]
 
@@ -47,5 +76,30 @@ modulate = Color(0.5409905, 0.5409905, 0.5409905, 1)
 position = Vector2(0.5, 2.9999905)
 scale = Vector2(762, 118.999985)
 texture = SubResource("CanvasTexture_rbct6")
+
+[node name="background" type="Node2D" parent="." unique_id=1699105270]
+z_index = -100
+
+[node name="Space" type="Parallax2D" parent="background" unique_id=1112543333]
+scroll_scale = Vector2(0.01, 0.01)
+repeat_size = Vector2(1280, 1280)
+
+[node name="Sprite2D" type="Sprite2D" parent="background/Space" unique_id=824720116]
+material = SubResource("ShaderMaterial_pm3q5")
+scale = Vector2(10, 10)
+texture = ExtResource("5_trtic")
+
+[node name="Dust" type="Parallax2D" parent="background" unique_id=611126205]
+repeat_size = Vector2(1111, 490)
+
+[node name="Sprite2D" type="Sprite2D" parent="background/Dust" unique_id=676699686]
+material = SubResource("ShaderMaterial_trtic")
+scale = Vector2(2, 2)
+texture = ExtResource("11_ca42v")
+
+[node name="Gradient" type="Sprite2D" parent="background" unique_id=1812276792]
+position = Vector2(307, 150)
+scale = Vector2(2, 2)
+texture = ExtResource("8_gee14")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
