@@ -3,6 +3,7 @@ extends RocketPart
 
 @export var lift_strength := 30.0
 @export var stability := 0.5
+@export var flippable: bool = true
 
 func _ready() -> void:
 	super._ready()

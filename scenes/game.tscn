@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://baw6pnljev02h"]
 
 [ext_resource type="Script" uid="uid://dspkd44v45211" path="res://scripts/main.gd" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://dwtkyuyglfn0h" path="res://assets/textures/icon.svg" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://bt55rtkql526s" path="res://scenes/ui.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://c6guir5jma5c7" path="res://scenes/rocket.tscn" id="2_lnu2h"]
 
@@ -12,10 +13,20 @@ size = Vector2(761, 113)
 [node name="game" type="Node2D" unique_id=710748681]
 script = ExtResource("1_yqjtg")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2051779844]
+position = Vector2(296, 251.99997)
+scale = Vector2(10.230469, 10.085937)
+texture = ExtResource("2_iywne")
+
 [node name="UI" parent="." unique_id=575252215 instance=ExtResource("2_lbhrr")]
 
 [node name="rocket" parent="." unique_id=127320129 instance=ExtResource("2_lnu2h")]
+unique_name_in_owner = true
+z_index = 1
 position = Vector2(306, 467)
+
+[node name="Camera2D" type="Camera2D" parent="rocket" unique_id=830810304]
+zoom = Vector2(5, 5)
 
 [node name="Timer" type="Timer" parent="." unique_id=1852348723]
 wait_time = 10.0

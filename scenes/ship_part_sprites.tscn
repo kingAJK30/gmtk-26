@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cmo0p41biq0dj"]
+
+[ext_resource type="Texture2D" uid="uid://cqmh7ek2kpyhp" path="res://assets/textures/RocketParts.png" id="1_v23wm"]
+[ext_resource type="Script" uid="uid://cfytpnaoxdbb" path="res://scripts/ship_part_sprites.gd" id="2_tueru"]
+
+[node name="ship_part_sprites" type="Sprite2D" unique_id=112958835]
+texture = ExtResource("1_v23wm")
+region_enabled = true
+region_filter_clip_enabled = true
+script = ExtResource("2_tueru")

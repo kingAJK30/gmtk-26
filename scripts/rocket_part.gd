@@ -10,6 +10,7 @@ var is_dragging := false
 var is_attached := false
 var target_rocket: RigidBody2D = null
 
+
 func _ready() -> void:
 	input_pickable = false
 
@@ -28,6 +29,7 @@ func _input(event: InputEvent) -> void:
 		_cancel_placement()
 
 func _process(_delta: float) -> void:
+
 	if is_dragging:
 		global_position = get_global_mouse_position()
 
@@ -44,6 +46,7 @@ func _try_attach() -> void:
 	if target_rocket:
 		reparent(target_rocket, true)
 		
+		z_index -= 1
 		is_attached = true
 		target_rocket.mass += part_mass
 		part_attached.emit()

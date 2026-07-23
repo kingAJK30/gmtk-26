@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://d2theip2q6oh6"]
 
 [ext_resource type="Script" uid="uid://cjku6a1govgyn" path="res://scripts/fin.gd" id="1_5royu"]
+[ext_resource type="PackedScene" uid="uid://cmo0p41biq0dj" path="res://scenes/ship_part_sprites.tscn" id="2_70gu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5royu"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_70gu0"]
+size = Vector2(10, 15)
 
 [node name="fin" type="Area2D" unique_id=492077113]
 script = ExtResource("1_5royu")
@@ -12,6 +12,5 @@ script = ExtResource("1_5royu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=335379215]
 shape = SubResource("RectangleShape2D_5royu")
 
-[node name="fin-sprite" type="Sprite2D" parent="CollisionShape2D" unique_id=212769356]
-scale = Vector2(20, 20)
-texture = SubResource("CanvasTexture_70gu0")
+[node name="ship_part_sprites" parent="." unique_id=1286389716 instance=ExtResource("2_70gu0")]
+region_rect = Rect2(74, 56, 10, 15)
