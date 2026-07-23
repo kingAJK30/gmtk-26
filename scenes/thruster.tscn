@@ -13,4 +13,4 @@ script = ExtResource("1_vbl7p")
 shape = SubResource("RectangleShape2D_rbct6")
 
 [node name="ship_part_sprites" parent="." unique_id=1286389716 instance=ExtResource("2_x6buh")]
-region_rect = Rect2(168, 56, 16, 16)
+region_rect = Rect2(164, 52, 24, 24)

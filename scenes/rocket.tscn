@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://c6guir5jma5c7"]
 
 [ext_resource type="Script" uid="uid://c2vkflkfaylsn" path="res://scripts/rocket.gd" id="1_agf72"]
-[ext_resource type="PackedScene" uid="uid://b5e2tgdgbr1oq" path="res://scenes/thruster.tscn" id="2_y2y7n"]
-[ext_resource type="PackedScene" uid="uid://d2theip2q6oh6" path="res://scenes/fin.tscn" id="3_8kmw3"]
-[ext_resource type="PackedScene" uid="uid://cmo0p41biq0dj" path="res://scenes/ship_part_sprites.tscn" id="4_y2y7n"]
+[ext_resource type="Texture2D" uid="uid://cqmh7ek2kpyhp" path="res://assets/textures/RocketParts.png" id="2_dkv7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00dr1"]
 size = Vector2(18, 36)
@@ -14,18 +12,12 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_agf72")
 
-[node name="parts" type="Node2D" parent="." unique_id=517463401]
-
-[node name="thruster" parent="parts" unique_id=126791644 instance=ExtResource("2_y2y7n")]
-position = Vector2(0, 19)
-
-[node name="fin" parent="parts" unique_id=1934220947 instance=ExtResource("3_8kmw3")]
-position = Vector2(-12, 5)
-
 [node name="core" type="CollisionShape2D" parent="." unique_id=648914525]
 shape = SubResource("RectangleShape2D_00dr1")
 
-[node name="ship_part_sprites" parent="." unique_id=1286389716 instance=ExtResource("4_y2y7n")]
-region_rect = Rect2(7, 6, 18, 36)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=693913410]
+texture = ExtResource("2_dkv7l")
+region_enabled = true
+region_rect = Rect2(5, 4, 22, 40)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

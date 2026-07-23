@@ -4,15 +4,19 @@ extends Area2D
 signal part_attached
 signal part_cancelled
 
-@export var part_mass := 0.5
+@onready var sprite: Sprite2D = $ship_part_sprites
 
-var is_dragging := false
+@export var part_mass := 0.5
+@export var is_dragging := false
+
 var is_attached := false
 var target_rocket: RigidBody2D = null
 
-
 func _ready() -> void:
 	input_pickable = false
+
+	if sprite.material:
+		sprite.material = sprite.material.duplicate()
 
 func start_dragging() -> void:
 	is_dragging = true
@@ -32,6 +36,10 @@ func _process(_delta: float) -> void:
 
 	if is_dragging:
 		global_position = get_global_mouse_position()
+		sprite.material.set_shader_parameter("type", 1)
+	else:
+		sprite.material.set_shader_parameter("type", 0)
+
 
 func _try_attach() -> void:
 	is_dragging = false
