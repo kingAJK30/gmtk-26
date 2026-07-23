@@ -2,7 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c8v5spned1usu" path="res://scripts/ui.gd" id="1_nt7q6"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_xlq6p"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nt7q6"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.25, 0.25, 0.25, 0.627451)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
 
 [node name="UI" type="CanvasLayer" unique_id=575252215]
 script = ExtResource("1_nt7q6")
@@ -15,31 +22,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BottomDock" type="MarginContainer" parent="Control" unique_id=289328490]
+[node name="BottomDock" type="PanelContainer" parent="Control" unique_id=545669674]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -30.0
+offset_top = -90.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nt7q6")
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/BottomDock" unique_id=723092847]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/BottomDock" unique_id=650646639]
 layout_mode = 2
+vertical_scroll_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/BottomDock/PanelContainer" unique_id=1919982793]
+[node name="PartList" type="HBoxContainer" parent="Control/BottomDock/ScrollContainer" unique_id=670370681]
 layout_mode = 2
-
-[node name="PartList" type="HBoxContainer" parent="Control/BottomDock/PanelContainer/MarginContainer" unique_id=670370681]
-layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/separation = 16
 
-[node name="ThrusterButton" type="Button" parent="Control/BottomDock/PanelContainer/MarginContainer/PartList" unique_id=1873452046]
-layout_mode = 2
-icon = SubResource("CanvasTexture_xlq6p")
-
-[node name="FinButton" type="Button" parent="Control/BottomDock/PanelContainer/MarginContainer/PartList" unique_id=599231636]
+[node name="ThrusterButton" type="Button" parent="Control/BottomDock/ScrollContainer/PartList" unique_id=1873452046]
 layout_mode = 2
 
-[connection signal="pressed" from="Control/BottomDock/PanelContainer/MarginContainer/PartList/ThrusterButton" to="." method="_on_thruster_button_pressed"]
+[node name="FinButton" type="Button" parent="Control/BottomDock/ScrollContainer/PartList" unique_id=599231636]
+layout_mode = 2
+
+[connection signal="pressed" from="Control/BottomDock/ScrollContainer/PartList/ThrusterButton" to="." method="_on_thruster_button_pressed"]

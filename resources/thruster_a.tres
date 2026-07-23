@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PartData" format=3 uid="uid://dxf6txovbq6qm"]
+
+[ext_resource type="Script" uid="uid://dug2lpgjtu0v" path="res://scripts/part_data.gd" id="1_8ssk2"]
+[ext_resource type="Texture2D" uid="uid://cqmh7ek2kpyhp" path="res://assets/textures/RocketParts.png" id="1_fyj0f"]
+[ext_resource type="PackedScene" uid="uid://b5e2tgdgbr1oq" path="res://scenes/thruster.tscn" id="2_fm6px"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm6px"]
+atlas = ExtResource("1_fyj0f")
+region = Rect2(136, 9, 16, 13)
+
+[resource]
+script = ExtResource("1_8ssk2")
+display_name = "Thruster Alpha"
+scene = ExtResource("2_fm6px")
+icon = SubResource("AtlasTexture_fm6px")
+metadata/_custom_type_script = "uid://dug2lpgjtu0v"

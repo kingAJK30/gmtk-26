@@ -27,6 +27,7 @@ position = Vector2(306, 467)
 
 [node name="Camera2D" type="Camera2D" parent="rocket" unique_id=830810304]
 zoom = Vector2(5, 5)
+position_smoothing_speed = 1.0
 
 [node name="Timer" type="Timer" parent="." unique_id=1852348723]
 wait_time = 10.0
