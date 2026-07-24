@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b5e2tgdgbr1oq"]
 
 [ext_resource type="Script" uid="uid://bgbneim8lwygc" path="res://scripts/thruster.gd" id="1_vbl7p"]
+[ext_resource type="PackedScene" uid="uid://c4sebovy0vlbh" path="res://scenes/fire.tscn" id="2_cp153"]
 [ext_resource type="PackedScene" uid="uid://cmo0p41biq0dj" path="res://scenes/ship_part_sprites.tscn" id="2_x6buh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rbct6"]
@@ -8,6 +9,9 @@ size = Vector2(16, 16)
 
 [node name="thruster" type="Area2D" unique_id=1407142797]
 script = ExtResource("1_vbl7p")
+
+[node name="Fire" parent="." unique_id=1050080789 instance=ExtResource("2_cp153")]
+position = Vector2(0, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1652292058]
 shape = SubResource("RectangleShape2D_rbct6")

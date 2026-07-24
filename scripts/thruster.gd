@@ -6,8 +6,11 @@ extends RocketPart
 @export var flippable: bool = false
 @export var fuel_duration := 5.0
 
+@onready var fire: AnimatedSprite2D = $Fire
+
 var fuel_remaining := 5.0
 var is_out_of_fuel := false
+var launched := false
 
 func _ready() -> void:
 	super._ready()
@@ -29,9 +32,16 @@ func _physics_process(delta: float) -> void:
 	var total_force = force_dir * max_thrust
 	var global_offset = global_position - target_rocket.global_position
 
+	if launched == false:
+		fire.launch()
+		launched = true
+
 	target_rocket.apply_central_force(total_force)
 	target_rocket.apply_torque(global_offset.cross(total_force))
 	
 
 func _on_fuel_depleted() -> void:
+	for child in get_children():
+		if child.has_method("_on_fuel_depleted"):
+			child._on_fuel_depleted()
 	print("%s ran out of fuel!" % name)

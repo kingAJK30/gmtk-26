@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bt55rtkql526s" path="res://scenes/ui.tscn" id="2_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://c6guir5jma5c7" path="res://scenes/rocket.tscn" id="3_muem4"]
 [ext_resource type="Shader" uid="uid://bf2aiutddfy3n" path="res://assets/shaders/space.gdshader" id="4_dp3eg"]
-[ext_resource type="Script" uid="uid://cgtutg00ujjxi" path="res://scenes/camera.gd" id="4_jbj1t"]
+[ext_resource type="Script" uid="uid://cgtutg00ujjxi" path="res://scripts/camera.gd" id="4_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://dwtkyuyglfn0h" path="res://assets/textures/icon.svg" id="5_0ld40"]
 [ext_resource type="Shader" uid="uid://d4k6lpyjmjytj" path="res://assets/shaders/stars.gdshader" id="6_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://cttncyjsk4olc" path="res://assets/textures/background/stars7.png" id="7_yc10j"]
@@ -111,13 +111,16 @@ texture = ExtResource("8_jscy8")
 [node name="Meteors" type="Node2D" parent="." unique_id=1406924107]
 
 [node name="meteor_large1" parent="Meteors" unique_id=1899251218 instance=ExtResource("9_pm3ni")]
-position = Vector2(362, 420)
+position = Vector2(386, 381)
 
 [node name="meteor_large2" parent="Meteors" unique_id=590045 instance=ExtResource("10_y6deb")]
-position = Vector2(370, 443)
+position = Vector2(230, 496)
+
+[node name="meteor_large4" parent="Meteors" unique_id=1437568101 instance=ExtResource("10_y6deb")]
+position = Vector2(381, 402)
 
 [node name="meteor_small1" parent="Meteors" unique_id=82581984 instance=ExtResource("11_og1vs")]
-position = Vector2(350, 438)
+position = Vector2(360, 395)
 
 [node name="meteor_large3" parent="Meteors" unique_id=1680272913 instance=ExtResource("12_2wyq8")]
 position = Vector2(250, 503)

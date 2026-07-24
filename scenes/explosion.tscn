@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6idtbga2gpva"]
 
 [ext_resource type="Texture2D" uid="uid://bkhu5vftry7kl" path="res://assets/textures/explosion.png" id="1_17npe"]
-[ext_resource type="Script" uid="uid://bv367ptghiq40" path="res://scenes/explosion.gd" id="2_nfeox"]
+[ext_resource type="Script" uid="uid://bv367ptghiq40" path="res://scripts/explosion.gd" id="2_nfeox"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nfeox"]
 load_path = "res://.godot/imported/explosion.png-80a4394ae1f6b17950041591275d0a73.ctex"
