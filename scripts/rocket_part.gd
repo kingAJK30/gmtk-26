@@ -53,10 +53,9 @@ func _try_attach() -> void:
 			
 	if target_rocket:
 		reparent(target_rocket, true)
-		
 		z_index -= 1
 		is_attached = true
-		target_rocket.mass += part_mass
+		target_rocket.register_part(self)
 		part_attached.emit()
 	else:
 		_cancel_placement()

@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://baw6pnljev02h"]
+
+[ext_resource type="Script" uid="uid://dspkd44v45211" path="res://scripts/main.gd" id="1_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://bt55rtkql526s" path="res://scenes/ui.tscn" id="2_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://c6guir5jma5c7" path="res://scenes/rocket.tscn" id="3_muem4"]
+[ext_resource type="Shader" uid="uid://bf2aiutddfy3n" path="res://assets/shaders/space.gdshader" id="4_dp3eg"]
+[ext_resource type="Script" uid="uid://cgtutg00ujjxi" path="res://scenes/camera.gd" id="4_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://dwtkyuyglfn0h" path="res://assets/textures/icon.svg" id="5_0ld40"]
+[ext_resource type="Shader" uid="uid://d4k6lpyjmjytj" path="res://assets/shaders/stars.gdshader" id="6_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://cttncyjsk4olc" path="res://assets/textures/background/stars7.png" id="7_yc10j"]
+[ext_resource type="Texture2D" uid="uid://b57tv6tae5f5q" path="res://assets/textures/background/gradient.png" id="8_jscy8"]
+[ext_resource type="PackedScene" uid="uid://rn47iue0t8c8" path="res://scenes/meteors/meteor_large1.tscn" id="9_pm3ni"]
+[ext_resource type="PackedScene" uid="uid://cng2vuc6ij2ew" path="res://scenes/meteors/meteor_large2.tscn" id="10_y6deb"]
+[ext_resource type="PackedScene" uid="uid://cxjxf022scmyi" path="res://scenes/meteors/meteor_small1.tscn" id="11_og1vs"]
+[ext_resource type="PackedScene" uid="uid://cyrqbcayme3p1" path="res://scenes/meteors/meteor_large3.tscn" id="12_2wyq8"]
+[ext_resource type="PackedScene" uid="uid://dnpolrvxk7gwq" path="res://scenes/meteors/meteor_large5.tscn" id="13_vxglm"]
+[ext_resource type="PackedScene" uid="uid://bi6txvw7jvudf" path="res://scenes/meteors/meteor_small7.tscn" id="14_2f3dj"]
+[ext_resource type="PackedScene" uid="uid://c7c6r5d2qeyt0" path="res://scenes/meteors/meteor_small4.tscn" id="15_yq6so"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pm3q5"]
+shader = ExtResource("4_dp3eg")
+shader_parameter/background_color = Color(0.013600001, 0.026880002, 0.08, 1)
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/density = 0.9999999747
+shader_parameter/layer_parascale = 4
+shader_parameter/star_speed = Vector2(0, 0)
+shader_parameter/star_wave = Vector2(0, 0)
+shader_parameter/star_size = 0.999999977648
+shader_parameter/star_rotate_speed = 0.5
+shader_parameter/twinkle_effect = 0.6
+shader_parameter/twinkle_speed = 0.3
+shader_parameter/pixelate_enabled = false
+shader_parameter/pixelate_count = 1000.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trtic"]
+shader = ExtResource("6_gqmmt")
+shader_parameter/g_random_seed = 0.0
+shader_parameter/g_grid_size = Vector2(16, 9)
+shader_parameter/g_cell_offset = Vector2(0, 0)
+shader_parameter/g_speed = Vector2(0, 0)
+shader_parameter/g_draw_size_min = 1.0
+shader_parameter/g_draw_size_max = 1.0
+shader_parameter/tex_draw = ExtResource("7_yc10j")
+shader_parameter/g_color_a = Color(1, 1, 1, 0)
+shader_parameter/g_color_b = Color(1, 1, 1, 1)
+shader_parameter/g_rot_global_speed = 0.01
+shader_parameter/g_rot_min_speed = 0.1
+shader_parameter/g_rot_max_speed = 1.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4v756"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_24c8c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v756"]
+size = Vector2(756, 133)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4v756"]
+
+[node name="main" type="Node2D" unique_id=710748681]
+script = ExtResource("1_jkv2x")
+
+[node name="Timer" type="Timer" parent="." unique_id=1852348723]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="UI" parent="." unique_id=575252215 instance=ExtResource("2_jbj1t")]
+
+[node name="Camera" type="Camera2D" parent="." unique_id=830810304 node_paths=PackedStringArray("target")]
+position = Vector2(306, 467)
+zoom = Vector2(3.5, 3.5)
+limit_left = 0
+limit_right = 640
+limit_bottom = 640
+script = ExtResource("4_jbj1t")
+target = NodePath("../rocket")
+
+[node name="rocket" parent="." unique_id=127320129 instance=ExtResource("3_muem4")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(306, 450)
+
+[node name="background" type="Node2D" parent="." unique_id=1699105270]
+z_index = -100
+
+[node name="Space" type="Parallax2D" parent="background" unique_id=1112543333]
+scale = Vector2(1.3, 1.3)
+scroll_scale = Vector2(0.01, 0.01)
+repeat_size = Vector2(1280, 1280)
+
+[node name="Sprite2D" type="Sprite2D" parent="background/Space" unique_id=824720116]
+material = SubResource("ShaderMaterial_pm3q5")
+scale = Vector2(10, 10)
+texture = ExtResource("5_0ld40")
+
+[node name="Dust" type="Parallax2D" parent="background" unique_id=611126205]
+visible = false
+repeat_size = Vector2(1111, 490)
+
+[node name="Sprite2D" type="Sprite2D" parent="background/Dust" unique_id=676699686]
+material = SubResource("ShaderMaterial_trtic")
+scale = Vector2(2, 2)
+texture = ExtResource("7_yc10j")
+
+[node name="Gradient" type="Sprite2D" parent="background" unique_id=1812276792]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(307, -1423.5)
+scale = Vector2(2, 8.42245)
+texture = ExtResource("8_jscy8")
+
+[node name="Meteors" type="Node2D" parent="." unique_id=1406924107]
+
+[node name="meteor_large1" parent="Meteors" unique_id=1899251218 instance=ExtResource("9_pm3ni")]
+position = Vector2(362, 420)
+
+[node name="meteor_large2" parent="Meteors" unique_id=590045 instance=ExtResource("10_y6deb")]
+position = Vector2(370, 443)
+
+[node name="meteor_small1" parent="Meteors" unique_id=82581984 instance=ExtResource("11_og1vs")]
+position = Vector2(350, 438)
+
+[node name="meteor_large3" parent="Meteors" unique_id=1680272913 instance=ExtResource("12_2wyq8")]
+position = Vector2(250, 503)
+
+[node name="meteor_large5" parent="Meteors" unique_id=665222965 instance=ExtResource("13_vxglm")]
+position = Vector2(269, 517)
+
+[node name="meteor_small7" parent="Meteors" unique_id=495269915 instance=ExtResource("14_2f3dj")]
+position = Vector2(250, 517)
+
+[node name="meteor_small4" parent="Meteors" unique_id=58416507 instance=ExtResource("15_yq6so")]
+position = Vector2(250, 485)
+
+[node name="Borders" type="StaticBody2D" parent="." unique_id=1060675706]
+collision_layer = 2
+
+[node name="bottom" type="CollisionShape2D" parent="Borders" unique_id=547900064]
+position = Vector2(0, 640)
+shape = SubResource("WorldBoundaryShape2D_4v756")
+
+[node name="left" type="CollisionShape2D" parent="Borders" unique_id=598165471]
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_24c8c")
+
+[node name="right" type="CollisionShape2D" parent="Borders" unique_id=1894419061]
+position = Vector2(640, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_24c8c")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1365623583]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D" unique_id=2145447360]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D" unique_id=2067249575]
+position = Vector2(335, 576.5)
+shape = SubResource("RectangleShape2D_4v756")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/StaticBody2D/CollisionShape2D" unique_id=1807775778]
+modulate = Color(0.4, 0.4, 0.4, 1)
+position = Vector2(-1.5258789e-05, -1.9073486e-05)
+scale = Vector2(756, 132.99997)
+texture = SubResource("CanvasTexture_4v756")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

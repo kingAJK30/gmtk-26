@@ -7,7 +7,7 @@
 size = Vector2(18, 36)
 
 [node name="rocket" type="RigidBody2D" unique_id=127320129]
-collision_mask = 2
+collision_mask = 3
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_agf72")

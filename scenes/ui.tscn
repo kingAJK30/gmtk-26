@@ -42,11 +42,3 @@ vertical_scroll_mode = 0
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 16
-
-[node name="ThrusterButton" type="Button" parent="Control/BottomDock/ScrollContainer/PartList" unique_id=1873452046]
-layout_mode = 2
-
-[node name="FinButton" type="Button" parent="Control/BottomDock/ScrollContainer/PartList" unique_id=599231636]
-layout_mode = 2
-
-[connection signal="pressed" from="Control/BottomDock/ScrollContainer/PartList/ThrusterButton" to="." method="_on_thruster_button_pressed"]
