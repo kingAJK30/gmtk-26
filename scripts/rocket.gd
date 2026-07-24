@@ -7,6 +7,8 @@ var launched := false
 @export var hull_inertia := 20000.0
 @export var max_angular_speed := 1
 
+@export var explosion_scene: PackedScene
+
 var _parts: Array[RocketPart] = []
 
 func _ready() -> void:
@@ -57,6 +59,12 @@ func launch() -> void:
 
 func explode() -> void:
 	print("BOOM BOOM BOOM")
+	
+	if explosion_scene:
+		var explosion := explosion_scene.instantiate() as Node2D
+		explosion.global_position = global_position
+		get_parent().add_child(explosion)
+	
 	queue_free()
 
 func _on_body_entered(_body: Node) -> void:
