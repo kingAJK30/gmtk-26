@@ -116,7 +116,8 @@ autostart = true
 [node name="UI" parent="." unique_id=575252215 instance=ExtResource("2_jbj1t")]
 
 [node name="Camera" type="Camera2D" parent="." unique_id=830810304 node_paths=PackedStringArray("target")]
-position = Vector2(306, 467)
+position = Vector2(306, 445)
+offset = Vector2(0, -50)
 zoom = Vector2(3.5, 3.5)
 limit_left = 215
 limit_top = -9999998
@@ -154,15 +155,15 @@ texture = ExtResource("7_yc10j")
 
 [node name="Gradient" type="Sprite2D" parent="background" unique_id=1812276792]
 modulate = Color(0, 1, 1, 1)
-position = Vector2(307, -1421.0001)
-scale = Vector2(2, 8.42245)
+position = Vector2(307, -5453.25)
+scale = Vector2(2, 24.443878)
 texture = ExtResource("8_jscy8")
 
 [node name="Borders" type="StaticBody2D" parent="." unique_id=1060675706]
 collision_layer = 2
 
 [node name="bottom" type="CollisionShape2D" parent="Borders" unique_id=547900064]
-position = Vector2(0, 640)
+position = Vector2(0, 636)
 shape = SubResource("WorldBoundaryShape2D_4v756")
 
 [node name="left" type="CollisionShape2D" parent="Borders" unique_id=598165471]
@@ -303,7 +304,7 @@ texture = ExtResource("14_dp3eg")
 
 [node name="Cloud60" type="Sprite2D" parent="Ground/Clouds_front" unique_id=831101112]
 z_index = 2
-position = Vector2(-118, 482)
+position = Vector2(-105, 476)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud61" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1925128381]
@@ -378,7 +379,7 @@ texture = ExtResource("13_muem4")
 
 [node name="Cloud53" type="Sprite2D" parent="Ground/Clouds_front" unique_id=2098071415]
 z_index = 2
-position = Vector2(-52, 410)
+position = Vector2(-101, 403)
 texture = ExtResource("13_muem4")
 
 [node name="Cloud31" type="Sprite2D" parent="Ground/Clouds_front" unique_id=98776943]
@@ -418,7 +419,7 @@ texture = ExtResource("13_muem4")
 
 [node name="Cloud38" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1967452580]
 z_index = 2
-position = Vector2(205, 6)
+position = Vector2(187, 56)
 texture = ExtResource("13_muem4")
 
 [node name="Cloud39" type="Sprite2D" parent="Ground/Clouds_front" unique_id=44632126]
@@ -463,7 +464,7 @@ texture = ExtResource("13_muem4")
 
 [node name="Cloud50" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1319228274]
 z_index = 2
-position = Vector2(103, 129)
+position = Vector2(87, 108)
 texture = ExtResource("13_muem4")
 
 [node name="Cloud51" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1899081358]
@@ -497,97 +498,296 @@ position = Vector2(211, 339)
 texture = ExtResource("15_0ld40")
 
 [node name="Cloud8" type="Sprite2D" parent="Ground/Clouds_front" unique_id=328452497]
-position = Vector2(-189, 354)
+position = Vector2(-188, 361)
+texture = ExtResource("15_0ld40")
+
+[node name="Cloud67" type="Sprite2D" parent="Ground/Clouds_front" unique_id=672413154]
+z_index = 2
+position = Vector2(113, -236)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud68" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1405940380]
+z_index = 2
+position = Vector2(-240, -241)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud69" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1747902461]
+z_index = 2
+position = Vector2(-376, -297)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud70" type="Sprite2D" parent="Ground/Clouds_front" unique_id=520250865]
+z_index = 2
+position = Vector2(-376, -297)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud71" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1020355660]
+z_index = 2
+position = Vector2(-518, -282)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud72" type="Sprite2D" parent="Ground/Clouds_front" unique_id=393260345]
+z_index = 2
+position = Vector2(-542, -236)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud73" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1906787944]
+z_index = 2
+position = Vector2(-328, -174)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud74" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1658639335]
+z_index = 2
+position = Vector2(327, 84)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud75" type="Sprite2D" parent="Ground/Clouds_front" unique_id=385446420]
+z_index = 2
+position = Vector2(166, 440)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud76" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1439427912]
+z_index = 2
+position = Vector2(237, 237)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud77" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1318810543]
+z_index = 2
+position = Vector2(-298, 388)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud78" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1550139977]
+z_index = 2
+position = Vector2(290, -1)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud79" type="Sprite2D" parent="Ground/Clouds_front" unique_id=989025867]
+z_index = 2
+position = Vector2(-2, 104)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud80" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1653942332]
+z_index = 2
+position = Vector2(-92, 59)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud81" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1113931407]
+z_index = 2
+position = Vector2(69, 6)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud82" type="Sprite2D" parent="Ground/Clouds_front" unique_id=229283630]
+z_index = 2
+position = Vector2(-124, 277)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud83" type="Sprite2D" parent="Ground/Clouds_front" unique_id=2133164710]
+z_index = 2
+position = Vector2(-427, 133)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud84" type="Sprite2D" parent="Ground/Clouds_front" unique_id=428585617]
+z_index = 2
+position = Vector2(-483, 3)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud85" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1678256281]
+z_index = 2
+position = Vector2(-253, -81)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud86" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1151653838]
+z_index = 2
+position = Vector2(-57, -281)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud87" type="Sprite2D" parent="Ground/Clouds_front" unique_id=439625775]
+z_index = 2
+position = Vector2(-125, -352)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud88" type="Sprite2D" parent="Ground/Clouds_front" unique_id=243371746]
+z_index = 2
+position = Vector2(-368, -329)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud89" type="Sprite2D" parent="Ground/Clouds_front" unique_id=2056875246]
+z_index = 2
+position = Vector2(-413, -392)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud90" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1136547173]
+z_index = 2
+position = Vector2(-103, -421)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud91" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1166918643]
+z_index = 2
+position = Vector2(307, -400)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud92" type="Sprite2D" parent="Ground/Clouds_front" unique_id=14288126]
+z_index = 2
+position = Vector2(238, -235)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud93" type="Sprite2D" parent="Ground/Clouds_front" unique_id=704399356]
+z_index = 2
+position = Vector2(354, -282)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud94" type="Sprite2D" parent="Ground/Clouds_front" unique_id=591617700]
+z_index = 2
+position = Vector2(466, -262)
+texture = ExtResource("14_dp3eg")
+
+[node name="Cloud2" type="Sprite2D" parent="Ground/Clouds_front" unique_id=342229373]
+z_index = 2
+position = Vector2(-209, -276)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud95" type="Sprite2D" parent="Ground/Clouds_front" unique_id=390284648]
+z_index = 2
+position = Vector2(-405, -254)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud96" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1204652733]
+z_index = 2
+position = Vector2(-120, 204)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud97" type="Sprite2D" parent="Ground/Clouds_front" unique_id=865338230]
+z_index = 2
+position = Vector2(206, -312)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud98" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1809673654]
+z_index = 2
+position = Vector2(364, -182)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud99" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1973214416]
+z_index = 2
+position = Vector2(424, 31)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud100" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1557608127]
+z_index = 2
+position = Vector2(457, -315)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud101" type="Sprite2D" parent="Ground/Clouds_front" unique_id=754491153]
+z_index = 2
+position = Vector2(558, -367)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud102" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1192914481]
+z_index = 2
+position = Vector2(-355, -356)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud103" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1953583496]
+z_index = 2
+position = Vector2(39, -382)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud104" type="Sprite2D" parent="Ground/Clouds_front" unique_id=822824016]
+z_index = 2
+position = Vector2(168, -143)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud105" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1885676234]
+z_index = 2
+position = Vector2(-223, -339)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud106" type="Sprite2D" parent="Ground/Clouds_front" unique_id=944904615]
+z_index = 2
+position = Vector2(-259, -416)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud107" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1712634966]
+z_index = 2
+position = Vector2(330, -355)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud108" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1593337907]
+z_index = 2
+position = Vector2(102, -340)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud109" type="Sprite2D" parent="Ground/Clouds_front" unique_id=95781979]
+z_index = 2
+position = Vector2(456, -242)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud110" type="Sprite2D" parent="Ground/Clouds_front" unique_id=431020948]
+z_index = 2
+position = Vector2(548, -294)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud111" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1356464790]
+z_index = 2
+position = Vector2(180, -420)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud112" type="Sprite2D" parent="Ground/Clouds_front" unique_id=884188592]
+z_index = 2
+position = Vector2(-71, -204)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud113" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1954435999]
+z_index = 2
+position = Vector2(68, -91)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud114" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1474029235]
+z_index = 2
+position = Vector2(-361, 75)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud115" type="Sprite2D" parent="Ground/Clouds_front" unique_id=778567520]
+z_index = 2
+position = Vector2(11, -283)
+texture = ExtResource("13_muem4")
+
+[node name="Cloud9" type="Sprite2D" parent="Ground/Clouds_front" unique_id=648026460]
+position = Vector2(-295, 129)
+texture = ExtResource("15_0ld40")
+
+[node name="Cloud10" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1695141227]
+position = Vector2(-458, 44)
+texture = ExtResource("15_0ld40")
+
+[node name="Cloud11" type="Sprite2D" parent="Ground/Clouds_front" unique_id=452714938]
+position = Vector2(-238, -54)
+texture = ExtResource("15_0ld40")
+
+[node name="Cloud12" type="Sprite2D" parent="Ground/Clouds_front" unique_id=1473145525]
+position = Vector2(-317, -96)
+texture = ExtResource("15_0ld40")
+
+[node name="Cloud13" type="Sprite2D" parent="Ground/Clouds_front" unique_id=660831355]
+position = Vector2(192, 140)
+texture = ExtResource("15_0ld40")
+
+[node name="Cloud14" type="Sprite2D" parent="Ground/Clouds_front" unique_id=435591552]
+position = Vector2(-207, 162)
 texture = ExtResource("15_0ld40")
 
 [node name="Sky_Background" type="Node2D" parent="Ground" unique_id=1410055017]
 position = Vector2(300, -350)
 
 [node name="Parallax2D" type="Parallax2D" parent="Ground/Sky_Background" unique_id=1767662235]
-scroll_scale = Vector2(0.25, 0.25)
+scroll_scale = Vector2(0.45, 0.45)
 
 [node name="Sky" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D" unique_id=1611463615]
 z_index = -2
-position = Vector2(0, 154)
+position = Vector2(0, 176)
 scale = Vector2(1, 0.6645508)
 texture = ExtResource("12_eb6dy")
 
 [node name="Clouds" type="Node2D" parent="Ground/Sky_Background/Parallax2D" unique_id=305944541]
-
-[node name="Cloud1" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1949881757]
-z_index = -2
-position = Vector2(-486, 446)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud30" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1833439324]
-z_index = -2
-position = Vector2(-386, -209)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud31" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=467369056]
-z_index = -2
-position = Vector2(401, -287)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud32" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1505352075]
-z_index = -2
-position = Vector2(133, -98)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud38" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=210470391]
-z_index = -2
-position = Vector2(-185, 542)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud56" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=16843601]
-z_index = -2
-position = Vector2(-191, 618)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud39" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=640664464]
-z_index = -2
-position = Vector2(161, 451)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud40" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1503249168]
-z_index = -2
-position = Vector2(-108, 335)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud41" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=588306170]
-z_index = -2
-position = Vector2(225, 283)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud12" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1849658000]
-z_index = -2
-position = Vector2(382, 105)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud13" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1647258997]
-z_index = -2
-position = Vector2(-523, 36)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud14" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1436846078]
-z_index = -2
-position = Vector2(-352, 73)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud15" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=2047213933]
-z_index = -2
-position = Vector2(234, 197)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud16" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1480235924]
-z_index = -2
-position = Vector2(194, 555)
-texture = ExtResource("13_muem4")
-
-[node name="Cloud59" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=599305036]
-z_index = -2
-position = Vector2(-19, 496)
-texture = ExtResource("13_muem4")
 
 [node name="Cloud17" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1954310896]
 z_index = -2
@@ -601,22 +801,22 @@ texture = ExtResource("13_muem4")
 
 [node name="Cloud2" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1363321927]
 z_index = -2
-position = Vector2(-360, 500)
+position = Vector2(-31, 549)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud18" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1422138536]
 z_index = -2
-position = Vector2(359, 154)
+position = Vector2(-219, 352)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud19" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=329374539]
 z_index = -2
-position = Vector2(-416, 125)
+position = Vector2(-65, 289)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud20" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=280741578]
 z_index = -2
-position = Vector2(-395, -10)
+position = Vector2(-29, 452)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud21" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=251836289]
@@ -626,27 +826,27 @@ texture = ExtResource("14_dp3eg")
 
 [node name="Cloud50" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1826789442]
 z_index = -2
-position = Vector2(-58, 197)
+position = Vector2(38, 285)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud51" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1538199546]
 z_index = -2
-position = Vector2(-177, 136)
+position = Vector2(16, 69)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud52" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1803376256]
 z_index = -2
-position = Vector2(112, 106)
+position = Vector2(160, 492)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud53" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=60452700]
 z_index = -2
-position = Vector2(-180, 379)
+position = Vector2(-117, 376)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud54" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=279229649]
 z_index = -2
-position = Vector2(250, 492)
+position = Vector2(117, 400)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud55" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=226320948]
@@ -661,17 +861,17 @@ texture = ExtResource("14_dp3eg")
 
 [node name="Cloud35" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1042265873]
 z_index = -2
-position = Vector2(39, -66)
+position = Vector2(67, -40)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud36" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=144757626]
 z_index = -2
-position = Vector2(-182, 16)
+position = Vector2(-73, 14)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud23" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1150699435]
 z_index = -2
-position = Vector2(-452, -284)
+position = Vector2(-48, 90)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud24" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=968734462]
@@ -681,7 +881,7 @@ texture = ExtResource("14_dp3eg")
 
 [node name="Cloud61" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=941595669]
 z_index = -2
-position = Vector2(227, 655)
+position = Vector2(26, 365)
 texture = ExtResource("14_dp3eg")
 
 [node name="Cloud37" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1035851038]
@@ -726,7 +926,7 @@ texture = ExtResource("16_gqmmt")
 
 [node name="Cloud28" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=827863005]
 z_index = -2
-position = Vector2(284, 62)
+position = Vector2(60, 181)
 texture = ExtResource("16_gqmmt")
 
 [node name="Cloud42" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1820170267]
@@ -736,12 +936,12 @@ texture = ExtResource("16_gqmmt")
 
 [node name="Cloud43" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=34707856]
 z_index = -2
-position = Vector2(29, 377)
+position = Vector2(31, 412)
 texture = ExtResource("16_gqmmt")
 
 [node name="Cloud44" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1700776504]
 z_index = -2
-position = Vector2(-96, 267)
+position = Vector2(-71, 252)
 texture = ExtResource("16_gqmmt")
 
 [node name="Cloud45" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=838209576]
@@ -751,7 +951,7 @@ texture = ExtResource("16_gqmmt")
 
 [node name="Cloud46" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=356379670]
 z_index = -2
-position = Vector2(-140, 169)
+position = Vector2(-15, 145)
 texture = ExtResource("16_gqmmt")
 
 [node name="Cloud47" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=70821750]
@@ -776,7 +976,7 @@ texture = ExtResource("16_gqmmt")
 
 [node name="Cloud49" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=100666249]
 z_index = -2
-position = Vector2(-152, -345)
+position = Vector2(-156, 470)
 texture = ExtResource("16_gqmmt")
 
 [node name="Cloud29" type="Sprite2D" parent="Ground/Sky_Background/Parallax2D/Clouds" unique_id=1468773554]
