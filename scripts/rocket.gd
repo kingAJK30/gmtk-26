@@ -61,8 +61,7 @@ func explode() -> void:
 	queue_free()
 
 func _on_body_entered(_body: Node) -> void:
-	if launched and linear_velocity.length() > 0:
-		explode()
+	explode()
 
 func _physics_process(delta: float) -> void:
 	if not launched:

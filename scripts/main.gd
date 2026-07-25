@@ -67,6 +67,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	match current_state:
 		GameState.BUILD:
+			SoundManager.play_countdown_song()
 			var prev_sec := int(ceil(build_duration - build_timer))
 			build_timer += delta
 			var curr_sec := int(ceil(build_duration - build_timer))

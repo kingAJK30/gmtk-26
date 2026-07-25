@@ -6,6 +6,8 @@ const EXPLODE_SFX = preload("res://assets/audio/explode.wav")
 const PICKUP_SFX = preload("res://assets/audio/pickup.wav")
 const PLACE_SFX = preload("res://assets/audio/place.wav")
 
+const COUNTDOWN_VFX = preload("res://assets/audio/countdown_song.mp3")
+
 var bgm_player: AudioStreamPlayer
 var engine_player: AudioStreamPlayer
 
@@ -66,3 +68,6 @@ func start_engine(volume_db: float = -6.0) -> void:
 func stop_engine() -> void:
 	if engine_player and engine_player.playing:
 		engine_player.stop()
+
+func play_countdown_song() -> void:
+	play_bgm(COUNTDOWN_VFX, 0.0)
