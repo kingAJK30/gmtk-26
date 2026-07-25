@@ -5,6 +5,7 @@ const FIN_DATA = preload("res://resources/fin_a.tres")
 
 @onready var bottom_dock: Control = $Control/BottomDock
 @onready var part_list_container: HBoxContainer = $Control/BottomDock/ScrollContainer/PartList
+@onready var toolbox := $Control/BoxofToolsamr
 
 var inventory: Array[PartData] = []
 var currently_dragging_part: RocketPart = null
@@ -86,10 +87,12 @@ func hide_dock() -> void:
 	is_locked = true
 	_populate_inventory_ui()
 	
-	# Fade out opacity to 0 over 0.4 seconds, then fully hide the node
 	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(bottom_dock, "modulate:a", 0.0, 0.4)
 	tween.tween_callback(bottom_dock.hide)
+	tween.tween_property(toolbox, "modulate:a", 0.0, 0.4)
+	tween.tween_callback(toolbox.hide)
+
 
 func show_dock() -> void:
 	is_locked = false
