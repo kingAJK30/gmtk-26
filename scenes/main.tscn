@@ -138,7 +138,7 @@ target = NodePath("../rocket")
 [node name="rocket" parent="." unique_id=127320129 instance=ExtResource("3_muem4")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(306, 481)
+position = Vector2(306, 433)
 
 [node name="background" type="Node2D" parent="." unique_id=1699105270]
 z_index = -100

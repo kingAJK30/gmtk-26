@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://bt55rtkql526s"]
 
 [ext_resource type="Script" uid="uid://c8v5spned1usu" path="res://scripts/ui.gd" id="1_nt7q6"]
+[ext_resource type="Texture2D" uid="uid://qywux41hl7k8" path="res://assets/ui/toolbox.png" id="2_x4jx1"]
+[ext_resource type="Texture2D" uid="uid://dlort7f4pumdv" path="res://assets/ui/handle.png" id="3_yev5y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8am0p"]
+texture = ExtResource("2_x4jx1")
+texture_margin_left = 23.0
+texture_margin_top = 17.0
+texture_margin_right = 23.0
+texture_margin_bottom = 17.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uufc2"]
+texture = ExtResource("3_yev5y")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nt7q6"]
 content_margin_left = 10.0
@@ -22,14 +34,61 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="BoxofToolsamr" type="Control" parent="Control" unique_id=923814848]
+modulate = Color(0.7750634, 0.7750634, 0.77506363, 1)
+anchors_preset = 0
+offset_top = 502.0
+offset_right = 40.0
+offset_bottom = 542.0
+
+[node name="Toolbox" type="Panel" parent="Control/BoxofToolsamr" unique_id=1290964721]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 138.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8am0p")
+
+[node name="Handle" type="Panel" parent="Control/BoxofToolsamr" unique_id=1999952190]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 376.0
+offset_top = -56.0
+offset_right = 424.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uufc2")
+
+[node name="Handle2" type="Panel" parent="Control/BoxofToolsamr" unique_id=1105314134]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 176.0
+offset_top = -56.0
+offset_right = 224.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uufc2")
+
 [node name="BottomDock" type="PanelContainer" parent="Control" unique_id=545669674]
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -90.0
+offset_left = 16.0
+offset_top = -105.0
+offset_right = -16.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nt7q6")
