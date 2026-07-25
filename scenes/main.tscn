@@ -85,6 +85,7 @@ shader_parameter/g_rot_min_speed = 0.1
 shader_parameter/g_rot_max_speed = 1.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4v756"]
+distance = 116.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_24c8c"]
 
