@@ -132,7 +132,7 @@ scale = Vector2(10, 10)
 texture = ExtResource("5_0ld40")
 
 [node name="Dust" type="Parallax2D" parent="background" unique_id=611126205]
-visible = false
+scale = Vector2(2, 2)
 repeat_size = Vector2(1111, 490)
 
 [node name="Sprite2D" type="Sprite2D" parent="background/Dust" unique_id=676699686]

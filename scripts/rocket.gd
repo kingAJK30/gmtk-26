@@ -5,6 +5,7 @@ var launched := false
 
 @export var hull_mass := 1.0
 @export var hull_inertia := 20000.0
+@export var explosion_scene: PackedScene
 
 @export var base_lateral_accel := 1500.0
 @export var base_lateral_braking := 300.0
@@ -28,6 +29,8 @@ var attached_parts: Array[RocketPart] = []
 
 signal part_collected(part_scene: PackedScene)
 
+var _parts: Array[RocketPart] = []
+
 func _ready() -> void:
 	freeze = true
 	angular_damp = 10.0
@@ -47,6 +50,12 @@ func launch() -> void:
 
 func explode() -> void:
 	print("BOOM BOOM BOOM")
+	
+	if explosion_scene:
+		var explosion := explosion_scene.instantiate() as Node2D
+		explosion.global_position = global_position
+		get_parent().add_child(explosion)
+	
 	queue_free()
 
 func _on_body_entered(_body: Node) -> void:

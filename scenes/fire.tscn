@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://c4sebovy0vlbh"]
+
+[ext_resource type="Texture2D" uid="uid://c3rc4ykbo6opa" path="res://assets/textures/fire.png" id="1_xqmqg"]
+[ext_resource type="Script" uid="uid://r5tnguhcuk3m" path="res://scripts/fire.gd" id="2_g5mbl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8ujm"]
+atlas = ExtResource("1_xqmqg")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rte6i"]
+atlas = ExtResource("1_xqmqg")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp153"]
+atlas = ExtResource("1_xqmqg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o37hs"]
+atlas = ExtResource("1_xqmqg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvwbo"]
+atlas = ExtResource("1_xqmqg")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lb7k"]
+atlas = ExtResource("1_xqmqg")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbc2d"]
+atlas = ExtResource("1_xqmqg")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxw6y"]
+atlas = ExtResource("1_xqmqg")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8am0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8ujm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rte6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp153")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o37hs")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvwbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lb7k")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"end",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": 1,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbc2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxw6y")
+}],
+"loop": 0,
+"name": &"start",
+"speed": 15.0
+}]
+
+[node name="Fire" type="AnimatedSprite2D" unique_id=1050080789]
+sprite_frames = SubResource("SpriteFrames_8am0p")
+animation = &"off"
+autoplay = "off"
+script = ExtResource("2_g5mbl")
