@@ -3,21 +3,23 @@
 [ext_resource type="Script" uid="uid://c2vkflkfaylsn" path="res://scripts/rocket.gd" id="1_agf72"]
 [ext_resource type="Texture2D" uid="uid://cqmh7ek2kpyhp" path="res://assets/textures/RocketParts.png" id="2_dkv7l"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_00dr1"]
-size = Vector2(18, 36)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkv7l"]
+radius = 8.0
+height = 36.0
 
 [node name="rocket" type="RigidBody2D" unique_id=127320129]
+visibility_layer = 4
 collision_mask = 3
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_agf72")
 
-[node name="core" type="CollisionShape2D" parent="." unique_id=648914525]
-shape = SubResource("RectangleShape2D_00dr1")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=693913410]
 texture = ExtResource("2_dkv7l")
 region_enabled = true
 region_rect = Rect2(5, 4, 22, 40)
+
+[node name="core" type="CollisionShape2D" parent="." unique_id=648914525]
+shape = SubResource("CapsuleShape2D_dkv7l")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

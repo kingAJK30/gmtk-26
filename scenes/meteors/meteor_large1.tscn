@@ -8,6 +8,7 @@ radius = 12.0
 height = 24.0
 
 [node name="meteor_large1" type="Area2D" unique_id=1899251218]
+collision_layer = 2
 script = ExtResource("1_wxg3e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=650025452]

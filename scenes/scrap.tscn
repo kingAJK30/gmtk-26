@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cy6vf0cqeppdj"]
+
+[ext_resource type="Script" uid="uid://c7q73reek1itk" path="res://scenes/scrap.gd" id="1_w44v5"]
+[ext_resource type="PackedScene" uid="uid://cmo0p41biq0dj" path="res://scenes/ship_part_sprites.tscn" id="2_64tav"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbct6"]
+size = Vector2(16, 16)
+
+[node name="scrap" type="Area2D" unique_id=1407142797]
+visibility_layer = 2
+script = ExtResource("1_w44v5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1652292058]
+shape = SubResource("RectangleShape2D_rbct6")
+
+[node name="ship_part_sprites" parent="." unique_id=1286389716 instance=ExtResource("2_64tav")]
+region_rect = Rect2(104, 7, 16, 16)

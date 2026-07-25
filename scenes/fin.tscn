@@ -3,14 +3,16 @@
 [ext_resource type="Script" uid="uid://cjku6a1govgyn" path="res://scripts/fin.gd" id="1_5royu"]
 [ext_resource type="PackedScene" uid="uid://cmo0p41biq0dj" path="res://scenes/ship_part_sprites.tscn" id="2_70gu0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5royu"]
-size = Vector2(10, 15)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rbct6"]
+radius = 4.0
+height = 16.0
 
 [node name="fin" type="Area2D" unique_id=492077113]
+visibility_layer = 2
 script = ExtResource("1_5royu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=335379215]
-shape = SubResource("RectangleShape2D_5royu")
 
 [node name="ship_part_sprites" parent="." unique_id=1286389716 instance=ExtResource("2_70gu0")]
 region_rect = Rect2(70, 52, 19, 23)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1515146744]
+shape = SubResource("CapsuleShape2D_rbct6")
