@@ -44,12 +44,14 @@ func collect_part(part_scene: PackedScene) -> void:
 
 func launch() -> void:
 	print("ROCKET LAUNCHED")
+	SoundManager.start_engine()
 	launched = true
 	freeze = false
 	sleeping = false
 
 func explode() -> void:
 	print("BOOM BOOM BOOM")
+	SoundManager.stop_engine()
 	
 	if explosion_scene:
 		var explosion := explosion_scene.instantiate() as Node2D

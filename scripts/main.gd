@@ -60,11 +60,20 @@ func _ready() -> void:
 	if rocket:
 		launchpad_position = rocket.global_position
 		rocket.part_collected.connect(_on_part_collected)
+	
+	get_tree().root.size_changed.connect(_update_screen_borders)
+	_update_screen_borders()
 
 func _physics_process(delta: float) -> void:
 	match current_state:
 		GameState.BUILD:
+			var prev_sec := int(ceil(build_duration - build_timer))
 			build_timer += delta
+			var curr_sec := int(ceil(build_duration - build_timer))
+			
+			if curr_sec != prev_sec and curr_sec in [1, 2, 3]:
+				SoundManager.play_count()
+
 			if build_timer >= build_duration:
 				build_timer = 0.0
 				_start_launch_phase()
@@ -89,6 +98,26 @@ func _start_launch_phase() -> void:
 		
 	if rocket:
 		rocket.launch()
+
+func _update_screen_borders() -> void:
+	if not camera:
+		return
+		
+	var visible_world_size := get_viewport_rect().size / camera.zoom
+	var half_width := visible_world_size.x / 2.0
+	var center_x := 306.0
+
+	var left_x := center_x - half_width
+	var right_x := center_x + half_width
+
+
+	if has_node("Borders/left"):
+		$Borders/left.position.x = left_x
+	if has_node("Borders/right"):
+		$Borders/right.position.x = right_x
+
+	camera.limit_left = int(left_x)
+	camera.limit_right = int(right_x)
 
 func _enter_space_phase() -> void:
 	print("SPAAACE REACHED!")
@@ -167,6 +196,7 @@ func _spawn_space_pickup_ahead() -> void:
 	add_child(pickup)
 
 func _on_part_collected(part_scene: PackedScene) -> void:
+	SoundManager.play_pickup()
 	if not bottom_ui:
 		return
 
@@ -181,6 +211,7 @@ func _on_part_collected(part_scene: PackedScene) -> void:
 		print("Added Scrap to inventory!")
 
 func _return_to_launchpad() -> void:
+	SoundManager.stop_engine()
 	current_state = GameState.BUILD
 	space_timer = 0.0
 	build_timer = 0.0

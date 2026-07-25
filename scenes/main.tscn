@@ -117,7 +117,7 @@ autostart = true
 
 [node name="Camera" type="Camera2D" parent="." unique_id=830810304 node_paths=PackedStringArray("target")]
 position = Vector2(306, 445)
-offset = Vector2(0, -50)
+offset = Vector2(0, -20)
 zoom = Vector2(3.5, 3.5)
 limit_left = 215
 limit_top = -9999998
@@ -167,7 +167,7 @@ position = Vector2(0, 636)
 shape = SubResource("WorldBoundaryShape2D_4v756")
 
 [node name="left" type="CollisionShape2D" parent="Borders" unique_id=598165471]
-position = Vector2(215, 500)
+position = Vector2(150, 500)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_24c8c")
 

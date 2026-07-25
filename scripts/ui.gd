@@ -69,6 +69,7 @@ func _spawn_part(part_scene: PackedScene) -> void:
 	new_part.part_cancelled.connect(_on_part_cancelled)
 
 func _on_part_attached() -> void:
+	SoundManager.play_place()
 	if active_item_index != -1 and active_item_index < inventory.size():
 		inventory.remove_at(active_item_index)
 		
