@@ -41,6 +41,7 @@
 [ext_resource type="Resource" uid="uid://dxf6txovbq6qm" path="res://resources/thruster_a.tres" id="19_2f3dj"]
 [ext_resource type="Resource" uid="uid://dbqvwrq4tpg5q" path="res://resources/fin_a.tres" id="20_yq6so"]
 [ext_resource type="Resource" uid="uid://b4w036revviv7" path="res://resources/scrap_a.tres" id="21_yq6so"]
+[ext_resource type="Texture2D" uid="uid://bdnlcut6tg84x" path="res://assets/textures/speaker.png" id="42_2cjbq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wokje"]
 atlas = ExtResource("18_2wyq8")
@@ -53,6 +54,11 @@ region = Rect2(168, 56, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_u2el1"]
 atlas = ExtResource("18_2wyq8")
 region = Rect2(104, 7, 16, 16)
+
+[sub_resource type="Environment" id="Environment_8am0p"]
+background_mode = 3
+glow_enabled = true
+glow_bloom = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pm3q5"]
 shader = ExtResource("4_dp3eg")
@@ -108,6 +114,9 @@ thruster_data = ExtResource("19_2f3dj")
 fin_data = ExtResource("20_yq6so")
 scrap_data = ExtResource("21_yq6so")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1984300640]
+environment = SubResource("Environment_8am0p")
+
 [node name="Timer" type="Timer" parent="." unique_id=1852348723]
 wait_time = 5.0
 one_shot = true
@@ -116,20 +125,20 @@ autostart = true
 [node name="UI" parent="." unique_id=575252215 instance=ExtResource("2_jbj1t")]
 
 [node name="Camera" type="Camera2D" parent="." unique_id=830810304 node_paths=PackedStringArray("target")]
-position = Vector2(306, 445)
+position = Vector2(306, 466)
 offset = Vector2(0, -20)
 zoom = Vector2(3.5, 3.5)
 limit_left = 215
 limit_top = -9999998
 limit_right = 398
-limit_bottom = 538
+limit_bottom = 549
 script = ExtResource("4_jbj1t")
 target = NodePath("../rocket")
 
 [node name="rocket" parent="." unique_id=127320129 instance=ExtResource("3_muem4")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(306, 450)
+position = Vector2(306, 481)
 
 [node name="background" type="Node2D" parent="." unique_id=1699105270]
 z_index = -100
@@ -1018,5 +1027,9 @@ texture = ExtResource("16_gqmmt")
 z_index = -2
 position = Vector2(-127, 408)
 texture = ExtResource("17_yc10j")
+
+[node name="Speaker" type="Sprite2D" parent="." unique_id=543464618]
+position = Vector2(447, 481)
+texture = ExtResource("42_2cjbq")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
