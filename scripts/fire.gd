@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+@onready var smoke: GPUParticles2D = $Smoke
+
 var fuel_depleted := false
 
 func launch():
@@ -9,6 +11,12 @@ func launch():
 func _on_animation_finished() -> void:
 	if animation == "start" and not fuel_depleted:
 		play("default")
+
+func _process(_delta: float) -> void:
+	if animation == "default":
+		smoke.emitting = true
+	else:
+		smoke.emitting = false
 
 func _on_fuel_depleted() -> void:
 	if fuel_depleted:

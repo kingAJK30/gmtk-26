@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c3rc4ykbo6opa" path="res://assets/textures/fire.png" id="1_xqmqg"]
 [ext_resource type="Script" uid="uid://r5tnguhcuk3m" path="res://scripts/fire.gd" id="2_g5mbl"]
+[ext_resource type="Texture2D" uid="uid://bfbekgqbt4er5" path="res://assets/textures/smoke.png" id="3_g5mbl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m8ujm"]
 atlas = ExtResource("1_xqmqg")
@@ -91,8 +92,37 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rach5"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 9
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_txieb"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -50.0
+linear_accel_max = -50.0
+anim_speed_min = 0.59999996
+anim_speed_max = 0.79999995
+anim_offset_max = 0.3026
+
 [node name="Fire" type="AnimatedSprite2D" unique_id=1050080789]
 sprite_frames = SubResource("SpriteFrames_8am0p")
 animation = &"off"
 autoplay = "off"
 script = ExtResource("2_g5mbl")
+
+[node name="Smoke" type="GPUParticles2D" parent="." unique_id=31243683]
+z_index = -1
+material = SubResource("CanvasItemMaterial_rach5")
+position = Vector2(-1, 8)
+amount = 50
+texture = ExtResource("3_g5mbl")
+lifetime = 5.0
+trail_sections = 2
+trail_section_subdivisions = 1
+process_material = SubResource("ParticleProcessMaterial_txieb")
