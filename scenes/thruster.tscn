@@ -4,17 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://c4sebovy0vlbh" path="res://scenes/fire.tscn" id="2_cp153"]
 [ext_resource type="PackedScene" uid="uid://cmo0p41biq0dj" path="res://scenes/ship_part_sprites.tscn" id="2_x6buh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbct6"]
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbct6"]
+radius = 8.0
 
 [node name="thruster" type="Area2D" unique_id=1407142797]
+visibility_layer = 2
 script = ExtResource("1_vbl7p")
 
 [node name="Fire" parent="." unique_id=1050080789 instance=ExtResource("2_cp153")]
 position = Vector2(0, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1652292058]
-shape = SubResource("RectangleShape2D_rbct6")
+shape = SubResource("CircleShape2D_rbct6")
 
 [node name="ship_part_sprites" parent="." unique_id=1286389716 instance=ExtResource("2_x6buh")]
 region_rect = Rect2(164, 52, 24, 24)

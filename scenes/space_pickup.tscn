@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://0ckuo23lnd5q"]
+
+[ext_resource type="Script" uid="uid://b7tcc8cxyvptr" path="res://scenes/space_pickup.gd" id="1_wokje"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_og1vs"]
+radius = 26.076809
+
+[node name="SpacePickup" type="Area2D" unique_id=1731765006]
+script = ExtResource("1_wokje")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1484084486]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1430388315]
+shape = SubResource("CircleShape2D_og1vs")

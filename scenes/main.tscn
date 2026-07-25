@@ -2,11 +2,21 @@
 
 [ext_resource type="Script" uid="uid://dspkd44v45211" path="res://scripts/main.gd" id="1_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://bt55rtkql526s" path="res://scenes/ui.tscn" id="2_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://rn47iue0t8c8" path="res://scenes/meteors/meteor_large1.tscn" id="2_og1vs"]
+[ext_resource type="PackedScene" uid="uid://0ckuo23lnd5q" path="res://scenes/space_pickup.tscn" id="2_trceg"]
+[ext_resource type="PackedScene" uid="uid://cng2vuc6ij2ew" path="res://scenes/meteors/meteor_large2.tscn" id="3_2wyq8"]
+[ext_resource type="PackedScene" uid="uid://d2theip2q6oh6" path="res://scenes/fin.tscn" id="3_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://c6guir5jma5c7" path="res://scenes/rocket.tscn" id="3_muem4"]
 [ext_resource type="Shader" uid="uid://bf2aiutddfy3n" path="res://assets/shaders/space.gdshader" id="4_dp3eg"]
-[ext_resource type="Script" uid="uid://cgtutg00ujjxi" path="res://scripts/camera.gd" id="4_jbj1t"]
+[ext_resource type="Script" uid="uid://cgtutg00ujjxi" path="res://scenes/camera.gd" id="4_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://b5e2tgdgbr1oq" path="res://scenes/thruster.tscn" id="4_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://cyrqbcayme3p1" path="res://scenes/meteors/meteor_large3.tscn" id="4_vxglm"]
 [ext_resource type="Texture2D" uid="uid://dwtkyuyglfn0h" path="res://assets/textures/icon.svg" id="5_0ld40"]
+[ext_resource type="PackedScene" uid="uid://rhum4t0hr11p" path="res://scenes/meteors/meteor_large4.tscn" id="5_2f3dj"]
+[ext_resource type="PackedScene" uid="uid://cy6vf0cqeppdj" path="res://scenes/scrap.tscn" id="5_jbj1t"]
 [ext_resource type="Shader" uid="uid://d4k6lpyjmjytj" path="res://assets/shaders/stars.gdshader" id="6_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://dnpolrvxk7gwq" path="res://scenes/meteors/meteor_large5.tscn" id="6_yq6so"]
+[ext_resource type="PackedScene" uid="uid://cxjxf022scmyi" path="res://scenes/meteors/meteor_small1.tscn" id="7_fv21b"]
 [ext_resource type="Texture2D" uid="uid://cttncyjsk4olc" path="res://assets/textures/background/stars7.png" id="7_yc10j"]
 [ext_resource type="Texture2D" uid="uid://b57tv6tae5f5q" path="res://assets/textures/background/gradient.png" id="8_jscy8"]
 [ext_resource type="Texture2D" uid="uid://bhuxcum2i25oa" path="res://assets/textures/background/launchpad/launchtower.png" id="10_choun"]
@@ -21,6 +31,28 @@
 [ext_resource type="Texture2D" uid="uid://bfrsn67by1u8k" path="res://assets/textures/background/cloud_3.png" id="15_0ld40"]
 [ext_resource type="Texture2D" uid="uid://uo3i8u2dqp2x" path="res://assets/textures/background/cloud_4.png" id="16_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://tm0co3cqnbkp" path="res://assets/textures/background/cloud_5.png" id="17_yc10j"]
+[ext_resource type="PackedScene" uid="uid://bpntmsv1g7do6" path="res://scenes/meteors/meteor_small2.tscn" id="8_tel4y"]
+[ext_resource type="PackedScene" uid="uid://bib7yj2c3ymne" path="res://scenes/meteors/meteor_small3.tscn" id="9_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://c7c6r5d2qeyt0" path="res://scenes/meteors/meteor_small4.tscn" id="10_5q0nq"]
+[ext_resource type="PackedScene" uid="uid://ctsyb01gi7rxd" path="res://scenes/meteors/meteor_small5.tscn" id="11_dgi5k"]
+[ext_resource type="PackedScene" uid="uid://cskilw6v7ct6d" path="res://scenes/meteors/meteor_small6.tscn" id="12_j8jky"]
+[ext_resource type="PackedScene" uid="uid://bi6txvw7jvudf" path="res://scenes/meteors/meteor_small7.tscn" id="13_kmb1v"]
+[ext_resource type="Texture2D" uid="uid://cqmh7ek2kpyhp" path="res://assets/textures/RocketParts.png" id="18_2wyq8"]
+[ext_resource type="Resource" uid="uid://dxf6txovbq6qm" path="res://resources/thruster_a.tres" id="19_2f3dj"]
+[ext_resource type="Resource" uid="uid://dbqvwrq4tpg5q" path="res://resources/fin_a.tres" id="20_yq6so"]
+[ext_resource type="Resource" uid="uid://b4w036revviv7" path="res://resources/scrap_a.tres" id="21_yq6so"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wokje"]
+atlas = ExtResource("18_2wyq8")
+region = Rect2(74, 56, 10, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66hcs"]
+atlas = ExtResource("18_2wyq8")
+region = Rect2(168, 56, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2el1"]
+atlas = ExtResource("18_2wyq8")
+region = Rect2(104, 7, 16, 16)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pm3q5"]
 shader = ExtResource("4_dp3eg")
@@ -59,8 +91,21 @@ shader_parameter/g_rot_max_speed = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v756"]
 size = Vector2(328, 17)
 
-[node name="main" type="Node2D" unique_id=710748681]
+[node name="main" type="Node2D" unique_id=710748681 node_paths=PackedStringArray("rocket", "camera")]
 script = ExtResource("1_jkv2x")
+rocket = NodePath("rocket")
+camera = NodePath("Camera")
+meteor_scenes = Array[PackedScene]([ExtResource("2_og1vs"), ExtResource("3_2wyq8"), ExtResource("4_vxglm"), ExtResource("5_2f3dj"), ExtResource("6_yq6so"), ExtResource("7_fv21b"), ExtResource("8_tel4y"), ExtResource("9_qkpxi"), ExtResource("10_5q0nq"), ExtResource("11_dgi5k"), ExtResource("12_j8jky"), ExtResource("13_kmb1v")])
+space_pickup_scene = ExtResource("2_trceg")
+fin_scene = ExtResource("3_a8y0u")
+thruster_scene = ExtResource("4_jkv2x")
+scrap_scene = ExtResource("5_jbj1t")
+fin_texture = SubResource("AtlasTexture_wokje")
+thruster_texture = SubResource("AtlasTexture_66hcs")
+scrap_texture = SubResource("AtlasTexture_u2el1")
+thruster_data = ExtResource("19_2f3dj")
+fin_data = ExtResource("20_yq6so")
+scrap_data = ExtResource("21_yq6so")
 
 [node name="Timer" type="Timer" parent="." unique_id=1852348723]
 wait_time = 5.0
@@ -72,9 +117,9 @@ autostart = true
 [node name="Camera" type="Camera2D" parent="." unique_id=830810304 node_paths=PackedStringArray("target")]
 position = Vector2(306, 467)
 zoom = Vector2(3.5, 3.5)
-limit_left = 0
+limit_left = 215
 limit_top = -9999998
-limit_right = 640
+limit_right = 398
 limit_bottom = 538
 script = ExtResource("4_jbj1t")
 target = NodePath("../rocket")
@@ -120,11 +165,12 @@ position = Vector2(0, 640)
 shape = SubResource("WorldBoundaryShape2D_4v756")
 
 [node name="left" type="CollisionShape2D" parent="Borders" unique_id=598165471]
+position = Vector2(215, 500)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_24c8c")
 
 [node name="right" type="CollisionShape2D" parent="Borders" unique_id=1894419061]
-position = Vector2(640, 0)
+position = Vector2(398, 500)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_24c8c")
 

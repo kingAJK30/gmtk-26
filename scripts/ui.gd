@@ -38,6 +38,7 @@ func _populate_inventory_ui() -> void:
 		button.flat = true
 		button.custom_minimum_size = Vector2(88, 88)
 		button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		# Disable buttons while flying or holding a part
 		button.disabled = (currently_dragging_part != null or is_locked)
 		button.pressed.connect(_on_item_clicked.bind(i))
 		part_list_container.add_child(button)
@@ -84,12 +85,16 @@ func hide_dock() -> void:
 	is_locked = true
 	_populate_inventory_ui()
 	
-	var screen_height = get_viewport().get_visible_rect().size.y
-	var tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
-	tween.tween_property(bottom_dock, "position:y", screen_height + 50.0, 0.6)
+	# Fade out opacity to 0 over 0.4 seconds, then fully hide the node
+	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(bottom_dock, "modulate:a", 0.0, 0.4)
+	tween.tween_callback(bottom_dock.hide)
 
 func show_dock() -> void:
 	is_locked = false
-	var tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.tween_property(bottom_dock, "position:y", 0.0, 0.6)
-	tween.finished.connect(_populate_inventory_ui)
+	bottom_dock.show()
+	_populate_inventory_ui()
+	
+	# Fade opacity back to 1 over 0.4 seconds
+	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(bottom_dock, "modulate:a", 1.0, 0.4)

@@ -8,6 +8,7 @@ radius = 3.0
 height = 10.0
 
 [node name="meteor_small3" type="Area2D" unique_id=1899251218]
+collision_layer = 2
 script = ExtResource("1_ynt0l")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=650025452]
