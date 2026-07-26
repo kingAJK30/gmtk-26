@@ -58,6 +58,7 @@ func launch() -> void:
 func explode() -> void:
 	print("BOOM BOOM BOOM")
 	SoundManager.stop_engine()
+	SoundManager.stop_bgm()
 	
 	if explosion_scene:
 		var explosion := explosion_scene.instantiate() as Node2D
