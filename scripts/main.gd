@@ -80,6 +80,7 @@ func _physics_process(delta: float) -> void:
 				_start_launch_phase()
 
 		GameState.LAUNCH:
+			SoundManager.play_main_song()
 			if rocket and rocket.global_position.y <= space_altitude:
 				_enter_space_phase()
 
