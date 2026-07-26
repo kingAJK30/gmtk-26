@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c8v5spned1usu" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="Texture2D" uid="uid://qywux41hl7k8" path="res://assets/ui/toolbox.png" id="2_x4jx1"]
 [ext_resource type="Texture2D" uid="uid://dlort7f4pumdv" path="res://assets/ui/handle.png" id="3_yev5y"]
+[ext_resource type="FontFile" uid="uid://b6t8o5s7lc2m2" path="res://assets/fonts/Jersey25-Regular.ttf" id="4_gdt2y"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8am0p"]
 texture = ExtResource("2_x4jx1")
@@ -23,7 +24,69 @@ bg_color = Color(0.25, 0.25, 0.25, 0.627451)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 
+[sub_resource type="LabelSettings" id="LabelSettings_wm3ai"]
+font = ExtResource("4_gdt2y")
+font_size = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yev5y"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdt2y"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wm3ai"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dubc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gdt2y"]
+font = ExtResource("4_gdt2y")
+font_size = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dubc"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7vwb"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktti3"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgfq5"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_7dvkv"]
+thickness = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_vdcm2"]
+color = Color(1, 0.5176471, 0, 1)
+thickness = 8
+
 [node name="UI" type="CanvasLayer" unique_id=575252215]
+process_mode = 3
 script = ExtResource("1_nt7q6")
 
 [node name="Control" type="Control" parent="." unique_id=2026920316]
@@ -101,3 +164,203 @@ vertical_scroll_mode = 0
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 16
+
+[node name="Pause" type="ColorRect" parent="." unique_id=203887403]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="PauseMenu" type="Panel" parent="Pause" unique_id=990279084]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -193.0
+offset_right = 137.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseTitle" type="Label" parent="Pause/PauseMenu" unique_id=508741929]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 81.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_wm3ai")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainButtons" type="VBoxContainer" parent="Pause/PauseMenu" unique_id=1660109447]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.5
+offset_top = -74.5
+offset_right = 106.5
+offset_bottom = 135.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Resume" type="Button" parent="Pause/PauseMenu/MainButtons" unique_id=1239876047]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_yev5y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gdt2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wm3ai")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8dubc")
+text = "Resume"
+
+[node name="Options" type="Button" parent="Pause/PauseMenu/MainButtons" unique_id=1441251107]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_yev5y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gdt2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wm3ai")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8dubc")
+text = "Options"
+
+[node name="Restart" type="Button" parent="Pause/PauseMenu/MainButtons" unique_id=2135981789]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_yev5y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gdt2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wm3ai")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8dubc")
+text = "Restart"
+
+[node name="Exit" type="Button" parent="Pause/PauseMenu/MainButtons" unique_id=1459981224]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_yev5y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gdt2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wm3ai")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8dubc")
+text = "Main Menu"
+
+[node name="Options" type="Panel" parent="Pause" unique_id=1000751697]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -194.0
+offset_right = 241.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsTitle" type="Label" parent="Pause/Options" unique_id=1629056547]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 73.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_gdt2y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsBack" type="Button" parent="Pause/Options" unique_id=2140078977]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 259.0
+offset_right = 424.0
+offset_bottom = 318.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_8dubc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p7vwb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ktti3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cgfq5")
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/Options" unique_id=1479056586]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 23.0
+offset_top = 97.0
+offset_right = -15.0
+offset_bottom = 220.0
+grow_horizontal = 2
+theme_override_constants/separation = 75
+
+[node name="MusicVolContainer" type="HBoxContainer" parent="Pause/Options/VBoxContainer" unique_id=2009975774]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="MusicLabel" type="Label" parent="Pause/Options/VBoxContainer/MusicVolContainer" unique_id=379444528]
+layout_mode = 2
+text = "Music Volume"
+vertical_alignment = 1
+
+[node name="SliderBGM" type="HSlider" parent="Pause/Options/VBoxContainer/MusicVolContainer" unique_id=775042762]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/slider = SubResource("StyleBoxLine_7dvkv")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_vdcm2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_vdcm2")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SFXVolContainer" type="HBoxContainer" parent="Pause/Options/VBoxContainer" unique_id=148364050]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="SFXLabel" type="Label" parent="Pause/Options/VBoxContainer/SFXVolContainer" unique_id=1214146290]
+layout_mode = 2
+text = "SFX Volume"
+vertical_alignment = 1
+
+[node name="SliderSFX" type="HSlider" parent="Pause/Options/VBoxContainer/SFXVolContainer" unique_id=1367378615]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/slider = SubResource("StyleBoxLine_7dvkv")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_vdcm2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_vdcm2")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[connection signal="pressed" from="Pause/PauseMenu/MainButtons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause/PauseMenu/MainButtons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Pause/PauseMenu/MainButtons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Pause/PauseMenu/MainButtons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Pause/Options/OptionsBack" to="." method="_on_options_back_pressed"]

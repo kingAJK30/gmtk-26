@@ -13,11 +13,15 @@ var bgm_player: AudioStreamPlayer
 var engine_player: AudioStreamPlayer
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	bgm_player = AudioStreamPlayer.new()
+	bgm_player.process_mode = Node.PROCESS_MODE_PAUSABLE  # <-- Change to PAUSABLE
 	bgm_player.bus = &"BGM"
 	add_child(bgm_player)
 
 	engine_player = AudioStreamPlayer.new()
+	engine_player.process_mode = Node.PROCESS_MODE_PAUSABLE
 	engine_player.stream = ENGINE_SFX
 	engine_player.bus = &"SFX"
 	engine_player.volume_db = -24.0

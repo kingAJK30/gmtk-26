@@ -152,8 +152,7 @@ func _physics_process(delta: float) -> void:
 	if not launched:
 		return
 
-	# Manual Self-Destruct key ('R' or Escape)
-	if Input.is_key_pressed(KEY_R) or Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_key_pressed(KEY_R) or Input.is_action_just_pressed("restart"):
 		explode.call_deferred()
 		return
 

@@ -7,14 +7,72 @@ const FIN_DATA = preload("res://resources/fin_a.tres")
 @onready var part_list_container: HBoxContainer = $Control/BottomDock/ScrollContainer/PartList
 @onready var toolbox := $Control/BoxofToolsamr
 
+@onready var pause_overlay: ColorRect = $Pause
+@onready var pause_menu: Control = $Pause/PauseMenu
+@onready var options_panel: Panel = $Pause/Options
+
+@onready var resume_button: Button = $Pause/PauseMenu/MainButtons/Resume
+@onready var options_button: Button = $Pause/PauseMenu/MainButtons/Options
+@onready var restart_button: Button = $Pause/PauseMenu/MainButtons/Restart
+@onready var exit_button: Button = $Pause/PauseMenu/MainButtons/Exit
+@onready var options_back_button: Button = $Pause/Options/OptionsBack
+
 var inventory: Array[PartData] = []
 var currently_dragging_part: RocketPart = null
 var active_item_index: int = -1
 var is_locked: bool = false
 
 func _ready() -> void:
+	$Pause/Options/VBoxContainer/SFXVolContainer/SliderSFX.value_changed.connect(SoundManager.set_sfx_volume)
+	$Pause/Options/VBoxContainer/MusicVolContainer/SliderBGM.value_changed.connect(SoundManager.set_bgm_volume)
+	
+	_hide_pause_ui()
+	
 	_setup_starting_inventory()
 	_populate_inventory_ui()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		toggle_pause()
+
+func toggle_pause() -> void:
+	var is_paused := !get_tree().paused
+	get_tree().paused = is_paused
+	
+	if is_paused:
+		pause_overlay.visible = true
+		_reset_pause_submenus()
+	else:
+		_hide_pause_ui()
+
+func _reset_pause_submenus() -> void:
+	pause_menu.visible = true
+	options_panel.visible = false
+
+func _hide_pause_ui() -> void:
+	pause_overlay.visible = false
+	pause_menu.visible = false
+	options_panel.visible = false
+
+func _on_resume_pressed() -> void:
+	toggle_pause()
+
+func _on_options_pressed() -> void:
+	pause_menu.visible = false
+	options_panel.visible = true
+	
+func _on_options_back_pressed() -> void:
+	_reset_pause_submenus()
+
+func _on_restart_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+func _on_exit_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+# --- Inventory & Assembly Functions ---
 
 func _setup_starting_inventory() -> void:
 	for i in range(3):
@@ -39,7 +97,6 @@ func _populate_inventory_ui() -> void:
 		button.flat = true
 		button.custom_minimum_size = Vector2(88, 88)
 		button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		# Disable buttons while flying or holding a part
 		button.disabled = (currently_dragging_part != null or is_locked)
 		button.pressed.connect(_on_item_clicked.bind(i))
 		part_list_container.add_child(button)
@@ -93,12 +150,10 @@ func hide_dock() -> void:
 	tween.tween_property(toolbox, "modulate:a", 0.0, 0.4)
 	tween.tween_callback(toolbox.hide)
 
-
 func show_dock() -> void:
 	is_locked = false
 	bottom_dock.show()
 	_populate_inventory_ui()
 	
-	# Fade opacity back to 1 over 0.4 seconds
 	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(bottom_dock, "modulate:a", 1.0, 0.4)
