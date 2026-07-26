@@ -16,3 +16,5 @@ region_rect = Rect2(70, 52, 19, 23)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1515146744]
 shape = SubResource("CapsuleShape2D_rbct6")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=46019186]
