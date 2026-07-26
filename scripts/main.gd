@@ -125,7 +125,7 @@ func _enter_space_phase() -> void:
 	print("SPAAACE REACHED!")
 	current_state = GameState.SPACE
 	if rocket:
-		rocket.gravity_scale = 0.0
+		rocket.gravity_scale = 0.5
 		rocket.linear_damp = 3.5
 
 func _process_space_phase(delta: float) -> void:

@@ -2,10 +2,13 @@ class_name Rocket
 extends RigidBody2D
 
 var launched := false
+var is_invulnerable := false
+var no_thruster_timer := 0.0
 
 @export var hull_mass := 1.0
 @export var hull_inertia := 20000.0
 @export var explosion_scene: PackedScene
+@export var invulnerability_time := 0.4
 
 @export var base_lateral_accel := 1500.0
 @export var base_lateral_braking := 300.0
@@ -29,8 +32,6 @@ var attached_parts: Array[RocketPart] = []
 
 signal part_collected(part_scene: PackedScene)
 
-var _parts: Array[RocketPart] = []
-
 func _ready() -> void:
 	freeze = true
 	angular_damp = 10.0
@@ -38,6 +39,11 @@ func _ready() -> void:
 	center_of_mass_mode = RigidBody2D.CENTER_OF_MASS_MODE_CUSTOM
 	mass = hull_mass
 	inertia = hull_inertia
+	contact_monitor = true
+	max_contacts_reported = 8
+	
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
 
 func collect_part(part_scene: PackedScene) -> void:
 	part_collected.emit(part_scene)
@@ -60,11 +66,84 @@ func explode() -> void:
 	
 	queue_free()
 
-func _on_body_entered(_body: Node) -> void:
-	explode()
+func _on_body_entered(body: Node) -> void:
+	var body_name := body.name.to_lower()
+	var parent_name := body.get_parent().name.to_lower() if body.get_parent() else ""
+	
+	# DIAGNOSTIC PRINT: Check Output log when hitting the wall!
+	print("COLLIDED WITH: ", body.name, " | PARENT: ", parent_name, " | GROUPS: ", body.get_groups())
+
+	# Flexible border check (group OR node names)
+	var is_border := body.is_in_group("Borders") \
+		or (body.get_parent() and body.get_parent().is_in_group("Borders")) \
+		or body_name in ["left", "right", "bottom", "border", "borders"] \
+		or parent_name in ["borders", "border"] \
+		or "border" in body_name or "border" in parent_name
+
+	if is_border:
+		explode.call_deferred()
+		return
+
+	# Regular damage for meteors / hazards
+	if body.is_in_group("hazards") or body.is_in_group("meteors"):
+		take_damage()
+
+func take_damage() -> void:
+	if is_invulnerable:
+		return
+
+	attached_parts = attached_parts.filter(func(p): return is_instance_valid(p))
+
+	if attached_parts.is_empty():
+		explode.call_deferred()
+		return
+
+	is_invulnerable = true
+	get_tree().create_timer(invulnerability_time).timeout.connect(func(): is_invulnerable = false)
+
+	var random_part = attached_parts.pick_random()
+	attached_parts.erase(random_part)
+	detach_part.call_deferred(random_part)
+
+func detach_part(part: RocketPart) -> void:
+	attached_parts.erase(part)
+
+	var world = get_tree().current_scene
+	var global_pos = part.global_position
+	var global_rot = part.global_rotation
+
+	part.get_parent().remove_child(part)
+	world.add_child(part)
+
+	part.global_position = global_pos
+	part.global_rotation = global_rot
+
+	part.is_attached = false
+	
+	var impact_dir = (part.global_position - global_position).normalized()
+	if impact_dir == Vector2.ZERO:
+		impact_dir = Vector2.UP.rotated(randf_range(0, TAU))
+
+	_animate_debris(part, impact_dir)
+
+	recalculate_mass()
+
+func _animate_debris(part: Node2D, direction: Vector2) -> void:
+	var tween = create_tween().set_parallel(true)
+	var target_pos = part.global_position + (direction * randf_range(80.0, 180.0)) + linear_velocity * 0.5
+	tween.tween_property(part, "global_position", target_pos, 2.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(part, "rotation", part.rotation + randf_range(-PI, PI), 2.5)
+	tween.tween_property(part, "modulate:a", 0.0, 2.5)
+	
+	get_tree().create_timer(2.5).timeout.connect(part.queue_free)
 
 func _physics_process(delta: float) -> void:
 	if not launched:
+		return
+
+	# Manual Self-Destruct key ('R' or Escape)
+	if Input.is_key_pressed(KEY_R) or Input.is_action_just_pressed("ui_cancel"):
+		explode.call_deferred()
 		return
 
 	var active_fins := 0
@@ -77,6 +156,15 @@ func _physics_process(delta: float) -> void:
 			fin_imbalance += sign(part.position.x)
 		elif part is Thruster and part.is_attached:
 			active_thrusters += 1
+
+	# Auto-explode 2 seconds after all thrusters are lost
+	if active_thrusters == 0:
+		no_thruster_timer += delta
+		if no_thruster_timer >= 2.0:
+			explode.call_deferred()
+			return
+	else:
+		no_thruster_timer = 0.0
 
 	var steer := Input.get_axis("left", "right")
 
