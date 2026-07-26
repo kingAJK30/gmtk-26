@@ -192,6 +192,8 @@ offset_bottom = 40.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/BottomDock" unique_id=650646639]
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0.05, 0.125)
 vertical_scroll_mode = 0
 
 [node name="PartList" type="HBoxContainer" parent="Control/BottomDock/ScrollContainer" unique_id=670370681]
@@ -201,6 +203,7 @@ theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Pause" type="ColorRect" parent="." unique_id=203887403]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -317,18 +320,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
 text = "Options"
-
-[node name="Restart" type="Button" parent="Pause/PauseMenu/MainButtons" unique_id=2135981789]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("5_8dubc")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_rbct6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
-theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
-text = "Restart"
 
 [node name="Exit" type="Button" parent="Pause/PauseMenu/MainButtons" unique_id=1459981224]
 layout_mode = 2
@@ -501,6 +492,5 @@ value = 1.0
 
 [connection signal="pressed" from="Pause/PauseMenu/MainButtons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause/PauseMenu/MainButtons/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Pause/PauseMenu/MainButtons/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Pause/PauseMenu/MainButtons/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Pause/Options/OptionsBack" to="." method="_on_options_back_pressed"]

@@ -66,14 +66,9 @@ func _on_options_back_pressed() -> void:
 	SoundManager.play_click()
 	_reset_pause_submenus()
 
-func _on_restart_pressed() -> void:
-	SoundManager.play_click()
-	SoundManager.stop_bgm()
-	get_tree().paused = false
-	get_tree().reload_current_scene()
-
 func _on_exit_pressed() -> void:
 	SoundManager.play_click()
+	SoundManager.stop_bgm()
 	get_tree().paused = false
 	SoundManager.stop_engine()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

@@ -53,6 +53,14 @@ func play_bgm(stream: AudioStream, volume_db: float = 0.0) -> void:
 	bgm_player.volume_db = volume_db
 	bgm_player.play()
 
+func stop_bgm() -> void:
+	print("yeehaw")
+	if not bgm_player:
+		print("ERROR: bgm_player reference is null!")
+		return
+	bgm_player.stop()
+	bgm_player.stream = null
+
 #  0.0  = 100% original volume
 # -6.0  = roughly half volume
 # -12.0 = roughly quarter volume
@@ -87,12 +95,6 @@ func play_countdown_song() -> void:
 
 func play_main_song() -> void:
 	play_bgm(MAIN_SONG, 0.0)
-
-func stop_bgm() -> void:
-	if bgm_player and bgm_player.playing:
-		print("heeohw")
-		bgm_player.stop()
-		bgm_player.stream = null
 
 # Audio Controls
 func set_sfx_volume(value: float) -> void:
