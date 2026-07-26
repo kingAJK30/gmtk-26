@@ -204,7 +204,7 @@ layout_mode = 2
 text = "SFX Volume"
 vertical_alignment = 1
 
-[node name="SliderBGM" type="HSlider" parent="Options/VBoxContainer/SFXVolContainer" unique_id=1754548260]
+[node name="SliderSFX" type="HSlider" parent="Options/VBoxContainer/SFXVolContainer" unique_id=1754548260]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/slider = SubResource("StyleBoxLine_rbct6")

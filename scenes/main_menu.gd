@@ -4,8 +4,8 @@ extends Control
 @onready var options: Panel = $Options
 
 func _ready() -> void:
-	$Options/SliderSFX.value_changed.connect(SoundManager.set_sfx_volume)
-	$Options/SliderBGM.value_changed.connect(SoundManager.set_bgm_volume)
+	$Options/VBoxContainer/SFXVolContainer/SliderSFX.value_changed.connect(SoundManager.set_sfx_volume)
+	$Options/VBoxContainer/MusicVolContainer/SliderBGM.value_changed.connect(SoundManager.set_bgm_volume)
 	hide_menu()
 
 func hide_menu() -> void:
