@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://qywux41hl7k8" path="res://assets/ui/toolbox.png" id="2_x4jx1"]
 [ext_resource type="Texture2D" uid="uid://dlort7f4pumdv" path="res://assets/ui/handle.png" id="3_yev5y"]
 [ext_resource type="FontFile" uid="uid://b6t8o5s7lc2m2" path="res://assets/fonts/Jersey25-Regular.ttf" id="4_gdt2y"]
+[ext_resource type="FontFile" uid="uid://kuwe3ukuyxke" path="res://assets/fonts/Jersey10-Regular.ttf" id="5_8dubc"]
+[ext_resource type="Texture2D" uid="uid://cqmh7ek2kpyhp" path="res://assets/textures/RocketParts.png" id="6_p7vwb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8am0p"]
 texture = ExtResource("2_x4jx1")
@@ -28,61 +30,90 @@ corner_radius_top_right = 12
 font = ExtResource("4_gdt2y")
 font_size = 80
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yev5y"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbct6"]
+bg_color = Color(0.21568628, 0.24705882, 0.2901961, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.14509805, 0.16470589, 0.1882353, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdt2y"]
-bg_color = Color(0.2, 0.2, 0.2, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtw2f"]
+bg_color = Color(0.14509805, 0.16470589, 0.1882353, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3254902, 0.34901962, 0.42352942, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wm3ai"]
-bg_color = Color(0.4, 0.4, 0.4, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
+bg_color = Color(0.3254902, 0.34901962, 0.42352942, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.21568628, 0.24705882, 0.2901961, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dubc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vue75"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_gdt2y"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8dubc"]
+texture = ExtResource("2_x4jx1")
+texture_margin_left = 23.0
+texture_margin_top = 17.0
+texture_margin_right = 23.0
+texture_margin_bottom = 17.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p7vwb"]
+texture = ExtResource("3_yev5y")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ktti3"]
 font = ExtResource("4_gdt2y")
 font_size = 80
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dubc"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgfq5"]
+bg_color = Color(0.21568628, 0.24705882, 0.2901961, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.14509805, 0.16470589, 0.1882353, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7vwb"]
-bg_color = Color(0.2, 0.2, 0.2, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dvkv"]
+bg_color = Color(0.14509805, 0.16470589, 0.1882353, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3254902, 0.34901962, 0.42352942, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktti3"]
-bg_color = Color(0.4, 0.4, 0.4, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdcm2"]
+bg_color = Color(0.3254902, 0.34901962, 0.42352942, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.21568628, 0.24705882, 0.2901961, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgfq5"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rmj2"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_7dvkv"]
+[sub_resource type="LabelSettings" id="LabelSettings_vsj0x"]
+font = ExtResource("5_8dubc")
+font_size = 25
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsv74"]
+atlas = ExtResource("6_p7vwb")
+region = Rect2(5, 4, 22, 40)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_h1mc3"]
+color = Color(0.34509805, 0.05882353, 0.1254902, 1)
+thickness = 12
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cof4p"]
+color = Color(0.6745098, 0.18039216, 0.09803922, 1)
 thickness = 8
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_vdcm2"]
-color = Color(1, 0.5176471, 0, 1)
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_f7tlh"]
+color = Color(0.81, 0.22477499, 0.12149998, 1)
 thickness = 8
 
 [node name="UI" type="CanvasLayer" unique_id=575252215]
@@ -166,7 +197,6 @@ size_flags_vertical = 4
 theme_override_constants/separation = 16
 
 [node name="Pause" type="ColorRect" parent="." unique_id=203887403]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -188,11 +218,56 @@ offset_bottom = 133.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="BoxofToolsamr" type="Control" parent="Pause/PauseMenu" unique_id=1947630429]
+modulate = Color(0.7750634, 0.7750634, 0.77506363, 1)
+anchors_preset = 0
+offset_left = -4.0
+offset_top = -34.0
+offset_right = 36.0
+offset_bottom = 6.0
+
+[node name="Toolbox" type="Panel" parent="Pause/PauseMenu/BoxofToolsamr" unique_id=1600662237]
+layout_mode = 0
+offset_right = 282.0
+offset_bottom = 397.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8am0p")
+
+[node name="Handle" type="Panel" parent="Pause/PauseMenu/BoxofToolsamr" unique_id=625264608]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 176.0
+offset_top = -56.0
+offset_right = 224.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uufc2")
+
+[node name="Handle2" type="Panel" parent="Pause/PauseMenu/BoxofToolsamr" unique_id=1803795100]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -56.0
+offset_right = 72.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uufc2")
+
 [node name="PauseTitle" type="Label" parent="Pause/PauseMenu" unique_id=508741929]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 81.0
+offset_top = -23.0
+offset_bottom = 58.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
 text = "PAUSE"
@@ -208,9 +283,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -106.5
-offset_top = -74.5
+offset_top = -110.5
 offset_right = 106.5
-offset_bottom = 135.5
+offset_bottom = 171.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -218,56 +293,53 @@ theme_override_constants/separation = 10
 [node name="Resume" type="Button" parent="Pause/PauseMenu/MainButtons" unique_id=1239876047]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_yev5y")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_gdt2y")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wm3ai")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8dubc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_rbct6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
 text = "Resume"
 
 [node name="Options" type="Button" parent="Pause/PauseMenu/MainButtons" unique_id=1441251107]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_yev5y")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_gdt2y")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wm3ai")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8dubc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_rbct6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
 text = "Options"
 
 [node name="Restart" type="Button" parent="Pause/PauseMenu/MainButtons" unique_id=2135981789]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_yev5y")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_gdt2y")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wm3ai")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8dubc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_rbct6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
 text = "Restart"
 
 [node name="Exit" type="Button" parent="Pause/PauseMenu/MainButtons" unique_id=1459981224]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_yev5y")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_gdt2y")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wm3ai")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8dubc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_rbct6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
 text = "Main Menu"
 
-[node name="Options" type="Panel" parent="Pause" unique_id=1000751697]
+[node name="Options" type="Panel" parent="Pause" unique_id=1400092327]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -275,86 +347,150 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -241.0
-offset_top = -194.0
+offset_top = -187.0
 offset_right = 241.0
-offset_bottom = 153.0
+offset_bottom = 167.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OptionsTitle" type="Label" parent="Pause/Options" unique_id=1629056547]
+[node name="BoxofToolsamr" type="Control" parent="Pause/Options" unique_id=438037800]
+modulate = Color(0.7750634, 0.7750634, 0.77506363, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -193.0
+offset_right = -280.0
+offset_bottom = -153.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Toolbox" type="Panel" parent="Pause/Options/BoxofToolsamr" unique_id=612155925]
+layout_mode = 0
+offset_left = 63.0
+offset_top = -3.0
+offset_right = 577.0
+offset_bottom = 358.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8dubc")
+
+[node name="Handle" type="Panel" parent="Pause/Options/BoxofToolsamr" unique_id=869783396]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 376.0
+offset_top = -59.0
+offset_right = 424.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_p7vwb")
+
+[node name="Handle2" type="Panel" parent="Pause/Options/BoxofToolsamr" unique_id=767029578]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 176.0
+offset_top = -59.0
+offset_right = 224.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_p7vwb")
+
+[node name="OptionsTitle" type="Label" parent="Pause/Options" unique_id=1902175017]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 73.0
+offset_bottom = 81.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
 text = "OPTIONS"
-label_settings = SubResource("LabelSettings_gdt2y")
+label_settings = SubResource("LabelSettings_ktti3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionsBack" type="Button" parent="Pause/Options" unique_id=2140078977]
-layout_mode = 0
-offset_left = 59.0
-offset_top = 259.0
-offset_right = 424.0
-offset_bottom = 318.0
+[node name="OptionsBack" type="Button" parent="Pause/Options" unique_id=729903696]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -93.0
+offset_right = 103.0
+offset_bottom = -46.0
+grow_vertical = 0
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_8dubc")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_p7vwb")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ktti3")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_cgfq5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_cgfq5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7dvkv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vdcm2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6rmj2")
 text = "Back"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Pause/Options" unique_id=1479056586]
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/Options" unique_id=1661527773]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 23.0
-offset_top = 97.0
+offset_top = 89.0
 offset_right = -15.0
-offset_bottom = 220.0
+offset_bottom = 244.0
 grow_horizontal = 2
 theme_override_constants/separation = 75
 
-[node name="MusicVolContainer" type="HBoxContainer" parent="Pause/Options/VBoxContainer" unique_id=2009975774]
+[node name="MusicVolContainer" type="HBoxContainer" parent="Pause/Options/VBoxContainer" unique_id=1641247794]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="MusicLabel" type="Label" parent="Pause/Options/VBoxContainer/MusicVolContainer" unique_id=379444528]
+[node name="MusicLabel" type="Label" parent="Pause/Options/VBoxContainer/MusicVolContainer" unique_id=85080064]
 layout_mode = 2
 text = "Music Volume"
+label_settings = SubResource("LabelSettings_vsj0x")
 vertical_alignment = 1
 
-[node name="SliderBGM" type="HSlider" parent="Pause/Options/VBoxContainer/MusicVolContainer" unique_id=775042762]
+[node name="SliderBGM" type="HSlider" parent="Pause/Options/VBoxContainer/MusicVolContainer" unique_id=1104915074]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/slider = SubResource("StyleBoxLine_7dvkv")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_vdcm2")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_vdcm2")
+theme_override_icons/grabber = SubResource("AtlasTexture_qsv74")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_qsv74")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_qsv74")
+theme_override_styles/slider = SubResource("StyleBoxLine_h1mc3")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_cof4p")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_f7tlh")
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="SFXVolContainer" type="HBoxContainer" parent="Pause/Options/VBoxContainer" unique_id=148364050]
+[node name="SFXVolContainer" type="HBoxContainer" parent="Pause/Options/VBoxContainer" unique_id=1067475662]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="SFXLabel" type="Label" parent="Pause/Options/VBoxContainer/SFXVolContainer" unique_id=1214146290]
+[node name="SFXLabel" type="Label" parent="Pause/Options/VBoxContainer/SFXVolContainer" unique_id=297058550]
 layout_mode = 2
-text = "SFX Volume"
+text = "SFX Volume   "
+label_settings = SubResource("LabelSettings_vsj0x")
 vertical_alignment = 1
 
-[node name="SliderSFX" type="HSlider" parent="Pause/Options/VBoxContainer/SFXVolContainer" unique_id=1367378615]
+[node name="SliderSFX" type="HSlider" parent="Pause/Options/VBoxContainer/SFXVolContainer" unique_id=1529083444]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/slider = SubResource("StyleBoxLine_7dvkv")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_vdcm2")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_vdcm2")
+theme_override_icons/grabber = SubResource("AtlasTexture_qsv74")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_qsv74")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_qsv74")
+theme_override_styles/slider = SubResource("StyleBoxLine_h1mc3")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_cof4p")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_f7tlh")
 max_value = 1.0
 step = 0.01
 value = 1.0

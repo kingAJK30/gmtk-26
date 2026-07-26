@@ -13,14 +13,18 @@ func hide_menu() -> void:
 	options.visible = false
 
 func _on_launch_pressed() -> void:
+	SoundManager.play_click()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func _on_options_pressed() -> void:
+	SoundManager.play_click()
 	main_buttons.visible = false
 	options.visible = true
 
 func _on_exit_pressed() -> void:
+	SoundManager.play_click()
 	get_tree().quit()
 
 func _on_options_back_pressed() -> void:
+	SoundManager.play_click()
 	hide_menu()

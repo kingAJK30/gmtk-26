@@ -5,6 +5,8 @@ const ENGINE_SFX = preload("res://assets/audio/engine.wav")
 const EXPLODE_SFX = preload("res://assets/audio/explode.wav")
 const PICKUP_SFX = preload("res://assets/audio/pickup.wav")
 const PLACE_SFX = preload("res://assets/audio/place.wav")
+const BUTTON_SFX = preload("uid://dm6gqfhhs5rmh")
+
 
 const COUNTDOWN_SONG = preload("res://assets/audio/countdown_song.mp3")
 const MAIN_SONG = preload("res://assets/audio/main_song.mp3")
@@ -64,6 +66,9 @@ func play_pickup() -> void:
 func play_place() -> void:
 	play_sfx(PLACE_SFX, 0.1, -1.0)
 
+func play_click() -> void:
+	play_sfx(BUTTON_SFX, 0.1, -1.0)
+
 func start_engine(volume_db: float = -6.0) -> void:
 	if engine_player:
 		engine_player.volume_db = volume_db
@@ -79,6 +84,12 @@ func play_countdown_song() -> void:
 
 func play_main_song() -> void:
 	play_bgm(MAIN_SONG, 0.0)
+
+func stop_bgm() -> void:
+	if bgm_player and bgm_player.playing:
+		print("heeohw")
+		bgm_player.stop()
+		bgm_player.stream = null
 
 # Audio Controls
 func set_sfx_volume(value: float) -> void:

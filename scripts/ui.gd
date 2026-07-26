@@ -55,20 +55,26 @@ func _hide_pause_ui() -> void:
 	options_panel.visible = false
 
 func _on_resume_pressed() -> void:
+	SoundManager.play_click()
 	toggle_pause()
 
 func _on_options_pressed() -> void:
+	SoundManager.play_click()
 	pause_menu.visible = false
 	options_panel.visible = true
 	
 func _on_options_back_pressed() -> void:
+	SoundManager.play_click()
 	_reset_pause_submenus()
 
 func _on_restart_pressed() -> void:
+	SoundManager.play_click()
+	SoundManager.stop_bgm()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_exit_pressed() -> void:
+	SoundManager.play_click()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
