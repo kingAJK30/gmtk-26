@@ -66,15 +66,12 @@ func _on_options_back_pressed() -> void:
 	SoundManager.play_click()
 	_reset_pause_submenus()
 
-<<<<<<< HEAD
 func _on_restart_pressed() -> void:
 	SoundManager.play_click()
 	SoundManager.stop_bgm()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
-=======
->>>>>>> ed50b02 (fixed aspect ratio issues)
 func _on_exit_pressed() -> void:
 	SoundManager.play_click()
 	get_tree().paused = false
@@ -166,4 +163,3 @@ func show_dock() -> void:
 	
 	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(bottom_dock, "modulate:a", 1.0, 0.4)
-
