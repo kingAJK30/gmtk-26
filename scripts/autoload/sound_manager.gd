@@ -18,7 +18,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	bgm_player = AudioStreamPlayer.new()
-	bgm_player.process_mode = Node.PROCESS_MODE_PAUSABLE  # <-- Change to PAUSABLE
+	bgm_player.process_mode = Node.PROCESS_MODE_PAUSABLE
 	bgm_player.bus = &"BGM"
 	add_child(bgm_player)
 
@@ -43,12 +43,15 @@ func play_sfx(stream: AudioStream, pitch_rand: float = 0.1, volume_db: float = 0
 	player.finished.connect(player.queue_free)
 
 func play_bgm(stream: AudioStream, volume_db: float = 0.0) -> void:
-	if not stream or bgm_player.stream == stream:
+	if not stream:
 		return
+	
+	if bgm_player.stream == stream and bgm_player.playing:
+		return
+		
 	bgm_player.stream = stream
 	bgm_player.volume_db = volume_db
 	bgm_player.play()
-
 
 #  0.0  = 100% original volume
 # -6.0  = roughly half volume

@@ -7,13 +7,6 @@
 [ext_resource type="FontFile" uid="uid://kuwe3ukuyxke" path="res://assets/fonts/Jersey10-Regular.ttf" id="5_8dubc"]
 [ext_resource type="Texture2D" uid="uid://cqmh7ek2kpyhp" path="res://assets/textures/RocketParts.png" id="6_p7vwb"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8am0p"]
-texture = ExtResource("2_x4jx1")
-texture_margin_left = 23.0
-texture_margin_top = 17.0
-texture_margin_right = 23.0
-texture_margin_bottom = 17.0
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uufc2"]
 texture = ExtResource("3_yev5y")
 
@@ -25,6 +18,13 @@ content_margin_bottom = 10.0
 bg_color = Color(0.25, 0.25, 0.25, 0.627451)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8am0p"]
+texture = ExtResource("2_x4jx1")
+texture_margin_left = 23.0
+texture_margin_top = 17.0
+texture_margin_right = 23.0
+texture_margin_bottom = 17.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_wm3ai"]
 font = ExtResource("4_gdt2y")
@@ -129,17 +129,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BoxofToolsamr" type="Control" parent="Control" unique_id=923814848]
+visible = false
 modulate = Color(0.7750634, 0.7750634, 0.77506363, 1)
 anchors_preset = 0
 offset_top = 502.0
 offset_right = 40.0
 offset_bottom = 542.0
-
-[node name="Toolbox" type="Panel" parent="Control/BoxofToolsamr" unique_id=1290964721]
-layout_mode = 0
-offset_right = 640.0
-offset_bottom = 138.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_8am0p")
 
 [node name="Handle" type="Panel" parent="Control/BoxofToolsamr" unique_id=1999952190]
 layout_mode = 1
@@ -175,17 +170,24 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_uufc2")
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = -1
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.75
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -105.0
-offset_right = -16.0
-offset_bottom = -5.0
+offset_top = -138.0
+offset_bottom = 0.00036621094
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nt7q6")
+
+[node name="Toolbox" type="Panel" parent="Control/BottomDock" unique_id=1290964721]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8am0p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BottomDock/Toolbox" unique_id=1861870166]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/BottomDock" unique_id=650646639]
 layout_mode = 2
@@ -195,6 +197,7 @@ vertical_scroll_mode = 0
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 16
+alignment = 1
 
 [node name="Pause" type="ColorRect" parent="." unique_id=203887403]
 anchors_preset = 15

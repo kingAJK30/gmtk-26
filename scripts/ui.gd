@@ -13,7 +13,6 @@ const FIN_DATA = preload("res://resources/fin_a.tres")
 
 @onready var resume_button: Button = $Pause/PauseMenu/MainButtons/Resume
 @onready var options_button: Button = $Pause/PauseMenu/MainButtons/Options
-@onready var restart_button: Button = $Pause/PauseMenu/MainButtons/Restart
 @onready var exit_button: Button = $Pause/PauseMenu/MainButtons/Exit
 @onready var options_back_button: Button = $Pause/Options/OptionsBack
 
@@ -67,15 +66,19 @@ func _on_options_back_pressed() -> void:
 	SoundManager.play_click()
 	_reset_pause_submenus()
 
+<<<<<<< HEAD
 func _on_restart_pressed() -> void:
 	SoundManager.play_click()
 	SoundManager.stop_bgm()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
+=======
+>>>>>>> ed50b02 (fixed aspect ratio issues)
 func _on_exit_pressed() -> void:
 	SoundManager.play_click()
 	get_tree().paused = false
+	SoundManager.stop_engine()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 # --- Inventory & Assembly Functions ---
@@ -163,3 +166,4 @@ func show_dock() -> void:
 	
 	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(bottom_dock, "modulate:a", 1.0, 0.4)
+
