@@ -68,7 +68,6 @@ func get_part_rect(at_position: Vector2) -> Rect2:
 func _try_attach() -> void:
 	var rocket: Rocket = get_tree().current_scene.find_child("rocket", true, false) as Rocket
 	
-	# Cancel immediately if rocket doesn't exist OR is already launched
 	if not rocket or rocket.launched:
 		is_attached = false
 		part_cancelled.emit()

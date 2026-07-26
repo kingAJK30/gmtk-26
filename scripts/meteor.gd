@@ -13,7 +13,6 @@ func _ready() -> void:
 	origin = global_position
 	player_rocket = get_tree().get_first_node_in_group("rocket")
 	
-	# Connect the Area2D signal to detect when the rocket hits it
 	body_entered.connect(_on_body_entered)
 
 func _process(delta: float) -> void:
@@ -29,7 +28,5 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Rocket:
-		if body.has_method("explode"):
-			body.explode()
-		queue_free()
+	if body.has_method("take_damage"):
+		body.take_damage()
