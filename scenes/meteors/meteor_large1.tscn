@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cpcmifuirl2k0" path="res://scripts/meteor.gd" id="1_wxg3e"]
 [ext_resource type="Texture2D" uid="uid://domten4rdk77g" path="res://assets/textures/meteors.png" id="1_xi7qp"]
+[ext_resource type="Shader" uid="uid://b511paw1euns5" path="res://assets/shaders/meteor.gdshader" id="2_rscgf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tvt8c"]
+shader = ExtResource("2_rscgf")
+shader_parameter/clr = Color(1, 0, 0, 1)
+shader_parameter/type = 1
+shader_parameter/thickness = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgamu"]
 radius = 12.0
@@ -12,6 +19,7 @@ collision_layer = 2
 script = ExtResource("1_wxg3e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=650025452]
+material = SubResource("ShaderMaterial_tvt8c")
 texture = ExtResource("1_xi7qp")
 region_enabled = true
 region_rect = Rect2(0, 1, 37, 37)

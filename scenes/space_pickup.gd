@@ -16,6 +16,9 @@ func _ready() -> void:
 		sprite.name = "Sprite2D"
 		add_child(sprite)
 
+	if material:
+		sprite.material = material
+
 	if preview_texture:
 		sprite.texture = preview_texture
 

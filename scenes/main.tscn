@@ -46,15 +46,15 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wokje"]
 atlas = ExtResource("18_2wyq8")
-region = Rect2(74, 56, 10, 15)
+region = Rect2(72, 54, 14, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66hcs"]
 atlas = ExtResource("18_2wyq8")
-region = Rect2(168, 56, 16, 16)
+region = Rect2(166, 54, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u2el1"]
 atlas = ExtResource("18_2wyq8")
-region = Rect2(104, 7, 16, 16)
+region = Rect2(102, 53, 20, 20)
 
 [sub_resource type="Environment" id="Environment_8am0p"]
 background_mode = 3
