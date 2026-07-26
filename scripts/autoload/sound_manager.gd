@@ -75,3 +75,18 @@ func play_countdown_song() -> void:
 
 func play_main_song() -> void:
 	play_bgm(MAIN_SONG, 0.0)
+
+# Audio Controls
+func set_sfx_volume(value: float) -> void:
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("SFX"),
+		value
+	)
+
+func set_bgm_volume(value: float) -> void:
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("BGM"), value)
+
+func set_master_volume(value: float) -> void:
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("Master"), value)
