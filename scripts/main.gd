@@ -72,8 +72,8 @@ func _physics_process(delta: float) -> void:
 			build_timer += delta
 			var curr_sec := int(ceil(build_duration - build_timer))
 			
-			if curr_sec != prev_sec and curr_sec in [1, 2, 3]:
-				SoundManager.play_count()
+			if curr_sec != prev_sec and curr_sec in [1, 2, 3, 4, 5]:
+				pass
 
 			if build_timer >= build_duration:
 				build_timer = 0.0

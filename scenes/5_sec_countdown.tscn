@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://n1bnlv5nu4vf"]
+
+[ext_resource type="Texture2D" uid="uid://c4tx0ton2fknw" path="res://assets/textures/countdown.png" id="1_alp0r"]
+[ext_resource type="Script" uid="uid://cv3bi7ahjnok0" path="res://scripts/countdown.gd" id="2_h6trx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alp0r"]
+atlas = ExtResource("1_alp0r")
+region = Rect2(0, 0, 98, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6trx"]
+atlas = ExtResource("1_alp0r")
+region = Rect2(108, 0, 98, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmrd3"]
+atlas = ExtResource("1_alp0r")
+region = Rect2(216, 0, 98, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jy4j"]
+atlas = ExtResource("1_alp0r")
+region = Rect2(324, 0, 98, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kaex"]
+atlas = ExtResource("1_alp0r")
+region = Rect2(432, 0, 98, 132)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uufc2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alp0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6trx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmrd3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jy4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kaex")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="5SecCountdown" type="Node2D" unique_id=839345979]
+
+[node name="Control" type="Control" parent="." unique_id=2032931847]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Countdown" type="AnimatedSprite2D" parent="Control" unique_id=1546016775]
+sprite_frames = SubResource("SpriteFrames_uufc2")
+autoplay = "default"
+script = ExtResource("2_h6trx")

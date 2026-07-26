@@ -42,6 +42,7 @@
 [ext_resource type="Resource" uid="uid://dbqvwrq4tpg5q" path="res://resources/fin_a.tres" id="20_yq6so"]
 [ext_resource type="Resource" uid="uid://b4w036revviv7" path="res://resources/scrap_a.tres" id="21_yq6so"]
 [ext_resource type="Texture2D" uid="uid://bdnlcut6tg84x" path="res://assets/textures/speaker.png" id="42_2cjbq"]
+[ext_resource type="PackedScene" uid="uid://n1bnlv5nu4vf" path="res://scenes/5_sec_countdown.tscn" id="43_chjal"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wokje"]
 atlas = ExtResource("18_2wyq8")
@@ -123,6 +124,9 @@ one_shot = true
 autostart = true
 
 [node name="UI" parent="." unique_id=575252215 instance=ExtResource("2_jbj1t")]
+
+[node name="5SecCountdown" parent="UI" unique_id=839345979 instance=ExtResource("43_chjal")]
+position = Vector2(117, 145)
 
 [node name="Camera" type="Camera2D" parent="." unique_id=830810304 node_paths=PackedStringArray("target")]
 position = Vector2(306, 466)
