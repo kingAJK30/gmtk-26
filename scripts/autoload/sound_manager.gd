@@ -79,14 +79,12 @@ func play_main_song() -> void:
 # Audio Controls
 func set_sfx_volume(value: float) -> void:
 	AudioServer.set_bus_volume_db(
-		AudioServer.get_bus_index("SFX"),
-		value
-	)
+		AudioServer.get_bus_index("SFX"), linear_to_db(value))
 
 func set_bgm_volume(value: float) -> void:
 	AudioServer.set_bus_volume_db(
-		AudioServer.get_bus_index("BGM"), value)
+		AudioServer.get_bus_index("BGM"), linear_to_db(value))
 
 func set_master_volume(value: float) -> void:
 	AudioServer.set_bus_volume_db(
-		AudioServer.get_bus_index("Master"), value)
+		AudioServer.get_bus_index("Master"), linear_to_db(value))

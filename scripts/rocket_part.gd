@@ -12,6 +12,17 @@ var target_rocket: RigidBody2D = null
 
 func _ready() -> void:
 	input_event.connect(_on_input_event)
+	if has_node("Area2D"):
+		$Area2D.body_entered.connect(_on_hit)
+		$Area2D.area_entered.connect(_on_hit)
+	area_entered.connect(_on_area_entered)
+
+func _on_area_entered(other_area: Area2D) -> void:
+	pass
+
+func _on_hit(incoming: Node) -> void:
+	if is_attached and is_instance_valid(target_rocket):
+		target_rocket._on_body_entered(incoming)
 
 func start_dragging() -> void:
 	is_dragging = true

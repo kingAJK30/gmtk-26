@@ -64,16 +64,25 @@ func explode() -> void:
 		explosion.global_position = global_position
 		get_parent().add_child(explosion)
 	
+	visible = false
+	set_physics_process(false)
+	
+	collision_layer = 0
+	collision_mask = 0
+	for child in get_children():
+		if child is CollisionShape2D:
+			child.set_deferred("disabled", true)
+	
+	await get_tree().create_timer(2.5).timeout
+	
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
 	queue_free()
 
 func _on_body_entered(body: Node) -> void:
 	var body_name := body.name.to_lower()
 	var parent_name := body.get_parent().name.to_lower() if body.get_parent() else ""
 	
-	# DIAGNOSTIC PRINT: Check Output log when hitting the wall!
-	print("COLLIDED WITH: ", body.name, " | PARENT: ", parent_name, " | GROUPS: ", body.get_groups())
-
-	# Flexible border check (group OR node names)
 	var is_border := body.is_in_group("Borders") \
 		or (body.get_parent() and body.get_parent().is_in_group("Borders")) \
 		or body_name in ["left", "right", "bottom", "border", "borders"] \
@@ -84,7 +93,6 @@ func _on_body_entered(body: Node) -> void:
 		explode.call_deferred()
 		return
 
-	# Regular damage for meteors / hazards
 	if body.is_in_group("hazards") or body.is_in_group("meteors"):
 		take_damage()
 
@@ -108,6 +116,8 @@ func take_damage() -> void:
 func detach_part(part: RocketPart) -> void:
 	attached_parts.erase(part)
 
+	SoundManager.play_place()
+
 	var world = get_tree().current_scene
 	var global_pos = part.global_position
 	var global_rot = part.global_rotation
@@ -119,6 +129,7 @@ func detach_part(part: RocketPart) -> void:
 	part.global_rotation = global_rot
 
 	part.is_attached = false
+	part.target_rocket = null # Clear rocket reference on detach
 	
 	var impact_dir = (part.global_position - global_position).normalized()
 	if impact_dir == Vector2.ZERO:
@@ -291,7 +302,7 @@ func attach_part(part: RocketPart, global_pos: Vector2) -> void:
 	part.global_position = global_pos
 	part.is_attached = true
 	part.target_rocket = self
-	
+			
 	recalculate_mass()
 
 func register_part(part: RocketPart) -> void:
