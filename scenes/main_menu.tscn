@@ -3,27 +3,165 @@
 [ext_resource type="Script" uid="uid://f4pxf6f0a6ru" path="res://scenes/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://p8bp5dw1kpov" path="res://assets/textures/procrastinauts.png" id="2_bqqt6"]
 [ext_resource type="FontFile" uid="uid://b6t8o5s7lc2m2" path="res://assets/fonts/Jersey25-Regular.ttf" id="3_wu84c"]
+[ext_resource type="Texture2D" uid="uid://qywux41hl7k8" path="res://assets/ui/toolbox.png" id="4_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://b57tv6tae5f5q" path="res://assets/textures/background/gradient.png" id="5_8ln24"]
+[ext_resource type="Texture2D" uid="uid://dlort7f4pumdv" path="res://assets/ui/handle.png" id="5_oa1go"]
+[ext_resource type="FontFile" uid="uid://kuwe3ukuyxke" path="res://assets/fonts/Jersey10-Regular.ttf" id="7_oa1go"]
+[ext_resource type="Texture2D" uid="uid://cqmh7ek2kpyhp" path="res://assets/textures/RocketParts.png" id="8_tbmy8"]
+
+[sub_resource type="Shader" id="Shader_wu84c"]
+code = "shader_type canvas_item;
+
+uniform vec4 background_color : source_color = vec4(0.02, 0.04, 0.12, 1.0);
+uniform float aspect_ratio = 1.0;
+uniform float density : hint_range(0.0, 3.0, 0.0001) = 1.3;
+uniform int layer_parascale : hint_range(0, 5, 1) = 4;
+uniform vec2 star_speed = vec2(0.0);
+uniform vec2 star_wave = vec2(0.0);
+uniform float star_size : hint_range(0.0, 100.0, 0.01) = 3.0;
+uniform float star_rotate_speed : hint_range(-3.0, 3.0) = 0.5;
+uniform float twinkle_effect : hint_range(0.0, 1.0, 0.01) = 0.6;
+uniform float twinkle_speed : hint_range(0.0, 100.0, 0.01) = 0.3;
+uniform bool pixelate_enabled = false;
+uniform float pixelate_count = 1000.0;
+
+float one_div_x(float x) {
+	return (abs(x) < 0.0001) ? 1.0 : (1.0/x);
+}
+
+float one_div_x2(float x) {
+	return one_div_x(x) * one_div_x(x);
+}
+
+float get_beta_w(float x, float f, float size) {
+	return size * x * PI / f;
+}
+
+float get_beta_h(float y, float f, float size) {
+	return size * y * PI / f;
+}
+
+float get_i(vec2 uv, float f, vec2 size) {
+	return one_div_x2(get_beta_w(uv.x, f, size.x)) * one_div_x2(get_beta_h(uv.y, f, size.y));
+}
+
+float random(vec2 st) {
+	return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43759.5453123);
+}
+
+vec2 get_snowflake_world_center(vec2 grid_id, vec2 time_offset, vec2 snow_offset, float layer_scale) {
+	return (grid_id + snow_offset + time_offset) / layer_scale;
+}
+
+vec2 rotate(vec2 uv, float add_theta) {
+	float theta = atan(uv.y, uv.x) + add_theta;
+	float r = length(uv);
+	return vec2(r * cos(theta), r * sin(theta));
+}
+
+void fragment() {
+	vec4 color = background_color;
+
+	vec2 st = UV;
+	if (pixelate_enabled) {
+		st = round(st * pixelate_count) / pixelate_count;
+	}
+	st.x *= aspect_ratio;
+	vec2 cuv = (st - 0.5) * 2.0;
+
+	// Multi-layer star effect
+	for (int layer = 0; layer < layer_parascale; layer++) {
+		float layer_scale = exp(float(layer + 1) * density);
+		vec2 layer_speed = vec2(star_speed.x, star_speed.y) * (1.0 + float(layer) * 0.3);
+		float layer_size = star_size * (1.0 - float(layer) * 0.2);
+
+		vec2 layer_st = st * layer_scale;
+		vec2 cuv_st = cuv;
+
+		vec2 time_offset = TIME * layer_speed;
+		layer_st -= time_offset;
+
+		vec2 grid_st = fract(layer_st);
+		vec2 grid_id = floor(layer_st);
+
+		float rand_seed = random(grid_id);
+
+		vec2 snow_pos = vec2(
+			0.5 + (0.3 * sin((rand_seed * 6.28) + (TIME * star_wave.x))),
+			0.5 + (0.2 * cos((rand_seed * 12.56) + (TIME * star_wave.y)))
+		);
+
+		float dist = distance(grid_st, snow_pos);
+		float snow_size = layer_size * 0.01 * (0.5 + 0.5 * rand_seed);
+		float brightness = 1.0 - (float(layer) * 0.3);
+
+		float m = exp((-dist * dist) / (snow_size * snow_size));
+
+		vec2 fst = cuv_st - (get_snowflake_world_center(grid_id, time_offset, snow_pos, layer_scale) - 0.5) * 2.0;
+		fst = rotate(fst, TIME * star_rotate_speed);
+
+		float snowflake = m * 0.5 * (get_i(fst, 0.8 - (dist * 42.0), vec2(1.0 / snow_size)) + 1.0);
+
+		// Twinkle effect
+		float twinkle = (1.0 - twinkle_effect) + twinkle_effect * (sin(rand_seed * 100.0 + TIME * twinkle_speed) * cos(rand_seed * 120.0 + TIME * (twinkle_speed + 2.0)));
+		snowflake *= twinkle;
+
+		vec3 color_type = vec3(random(grid_id - 3.0), random(grid_id + 7.0), random(grid_id + 5.0));
+
+		color = max(color, color + ((snowflake * brightness) * vec4(color_type, 1.0)));
+	}
+
+COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oh7r2"]
+shader = SubResource("Shader_wu84c")
+shader_parameter/background_color = Color(0.02, 0.04, 0.12, 1)
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/density = 0.62689998413943
+shader_parameter/layer_parascale = 4
+shader_parameter/star_speed = Vector2(0, 0)
+shader_parameter/star_wave = Vector2(0, 0)
+shader_parameter/star_size = 3.0
+shader_parameter/star_rotate_speed = 0.5
+shader_parameter/twinkle_effect = 0.6
+shader_parameter/twinkle_speed = 0.3
+shader_parameter/pixelate_enabled = false
+shader_parameter/pixelate_count = 1000.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbmy8"]
+texture = ExtResource("4_rtw2f")
+texture_margin_left = 23.0
+texture_margin_top = 17.0
+texture_margin_right = 23.0
+texture_margin_bottom = 17.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jk1qb"]
+texture = ExtResource("5_oa1go")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbct6"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+bg_color = Color(0.21568628, 0.24705882, 0.2901961, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.14509805, 0.16470589, 0.1882353, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
-bg_color = Color(0.2, 0.2, 0.2, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtw2f"]
+bg_color = Color(0.14509805, 0.16470589, 0.1882353, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3254902, 0.34901962, 0.42352942, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6cm7"]
-bg_color = Color(0.4, 0.4, 0.4, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
+bg_color = Color(0.3254902, 0.34901962, 0.42352942, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.21568628, 0.24705882, 0.2901961, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vue75"]
 
@@ -31,11 +169,24 @@ corner_radius_bottom_left = 8
 font = ExtResource("3_wu84c")
 font_size = 80
 
+[sub_resource type="LabelSettings" id="LabelSettings_bqqt6"]
+font = ExtResource("7_oa1go")
+font_size = 25
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
+atlas = ExtResource("8_tbmy8")
+region = Rect2(5, 4, 22, 40)
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_rbct6"]
-thickness = 8
+color = Color(0.34509805, 0.05882353, 0.1254902, 1)
+thickness = 12
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_4v756"]
-color = Color(1, 0.5176471, 0, 1)
+color = Color(0.6745098, 0.18039216, 0.09803922, 1)
+thickness = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tbmy8"]
+color = Color(0.81, 0.22477499, 0.12149998, 1)
 thickness = 8
 
 [node name="MainMenu" type="Control" unique_id=161922625]
@@ -48,6 +199,7 @@ grow_vertical = 2
 script = ExtResource("1_l6cm7")
 
 [node name="Background" type="Panel" parent="." unique_id=1854988887]
+material = SubResource("ShaderMaterial_oh7r2")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,16 +212,82 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -320.0
-offset_top = 3.0000002
-offset_right = 940.0
-offset_bottom = 1003.0
+offset_left = -401.22183
+offset_top = 22.760422
+offset_right = 1178.7001
+offset_bottom = 1248.2194
 grow_horizontal = 2
 scale = Vector2(0.5077604, 0.5077604)
 texture = ExtResource("2_bqqt6")
 
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=537993242]
+modulate = Color(0, 1, 1, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1154.0701
+offset_top = 229.99998
+offset_right = 3367.885
+offset_bottom = 1067.0088
+grow_horizontal = 2
+scale = Vector2(0.5077604, 0.50145525)
+texture = ExtResource("5_8ln24")
+expand_mode = 2
+
+[node name="BoxofToolsamr" type="Control" parent="." unique_id=1282957963]
+modulate = Color(0.7750634, 0.7750634, 0.77506363, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -314.0
+offset_top = -62.0
+offset_right = -274.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Toolbox" type="Panel" parent="BoxofToolsamr" unique_id=1554210556]
+layout_mode = 0
+offset_left = 104.0
+offset_right = 524.0
+offset_bottom = 312.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_tbmy8")
+
+[node name="Handle" type="Panel" parent="BoxofToolsamr" unique_id=232903239]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 376.0
+offset_top = -56.0
+offset_right = 424.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_jk1qb")
+
+[node name="Handle2" type="Panel" parent="BoxofToolsamr" unique_id=1435261474]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 176.0
+offset_top = -56.0
+offset_right = 224.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_jk1qb")
+
 [node name="MainButtons" type="VBoxContainer" parent="." unique_id=1798158107]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,9 +295,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -183.0
-offset_top = -45.0
+offset_top = -13.0
 offset_right = 183.0
-offset_bottom = 165.0
+offset_bottom = 197.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -87,39 +305,36 @@ theme_override_constants/separation = 10
 [node name="Launch" type="Button" parent="MainButtons" unique_id=1212496177]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_wu84c")
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_rbct6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vue75")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l6cm7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
 text = "Launch!"
 
 [node name="Options" type="Button" parent="MainButtons" unique_id=1684975249]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_oa1go")
+theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_rbct6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vue75")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l6cm7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
 text = "Options"
 
 [node name="Exit" type="Button" parent="MainButtons" unique_id=980421845]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_oa1go")
+theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_rbct6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vue75")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l6cm7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
 text = "Exit"
 
@@ -131,17 +346,70 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -241.0
-offset_top = -120.0
+offset_top = -59.0
 offset_right = 241.0
-offset_bottom = 234.0
+offset_bottom = 295.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BoxofToolsamr" type="Control" parent="Options" unique_id=922116297]
+modulate = Color(0.7750634, 0.7750634, 0.77506363, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -193.0
+offset_right = -280.0
+offset_bottom = -153.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Toolbox" type="Panel" parent="Options/BoxofToolsamr" unique_id=586922298]
+layout_mode = 0
+offset_left = 63.0
+offset_top = -3.0
+offset_right = 577.0
+offset_bottom = 358.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_tbmy8")
+
+[node name="Handle" type="Panel" parent="Options/BoxofToolsamr" unique_id=1804284987]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 376.0
+offset_top = -59.0
+offset_right = 424.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_jk1qb")
+
+[node name="Handle2" type="Panel" parent="Options/BoxofToolsamr" unique_id=2140807197]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 176.0
+offset_top = -59.0
+offset_right = 224.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_jk1qb")
 
 [node name="OptionsTitle" type="Label" parent="Options" unique_id=1436913951]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 73.0
+offset_bottom = 81.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
 text = "OPTIONS"
@@ -150,19 +418,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OptionsBack" type="Button" parent="Options" unique_id=2000242687]
-layout_mode = 0
-offset_left = 59.0
-offset_top = 259.0
-offset_right = 424.0
-offset_bottom = 318.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -93.0
+offset_right = 103.0
+offset_bottom = -46.0
+grow_vertical = 0
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_oa1go")
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_rbct6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vue75")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l6cm7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
 text = "Back"
 
@@ -171,9 +442,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 23.0
-offset_top = 97.0
+offset_top = 89.0
 offset_right = -15.0
-offset_bottom = 220.0
+offset_bottom = 244.0
 grow_horizontal = 2
 theme_override_constants/separation = 75
 
@@ -184,14 +455,18 @@ theme_override_constants/separation = 30
 [node name="MusicLabel" type="Label" parent="Options/VBoxContainer/MusicVolContainer" unique_id=245234338]
 layout_mode = 2
 text = "Music Volume"
+label_settings = SubResource("LabelSettings_bqqt6")
 vertical_alignment = 1
 
 [node name="SliderBGM" type="HSlider" parent="Options/VBoxContainer/MusicVolContainer" unique_id=1112202178]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_icons/grabber = SubResource("AtlasTexture_5dd4i")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_5dd4i")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_5dd4i")
 theme_override_styles/slider = SubResource("StyleBoxLine_rbct6")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_4v756")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_4v756")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_tbmy8")
 min_value = -80.0
 max_value = 0.0
 
@@ -201,15 +476,19 @@ theme_override_constants/separation = 30
 
 [node name="SFXLabel" type="Label" parent="Options/VBoxContainer/SFXVolContainer" unique_id=1821667224]
 layout_mode = 2
-text = "SFX Volume"
+text = "SFX Volume   "
+label_settings = SubResource("LabelSettings_bqqt6")
 vertical_alignment = 1
 
 [node name="SliderSFX" type="HSlider" parent="Options/VBoxContainer/SFXVolContainer" unique_id=1754548260]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_icons/grabber = SubResource("AtlasTexture_5dd4i")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_5dd4i")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_5dd4i")
 theme_override_styles/slider = SubResource("StyleBoxLine_rbct6")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_4v756")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_4v756")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_tbmy8")
 min_value = -80.0
 max_value = 0.0
 
