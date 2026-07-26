@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://b8xxm06qgkjxv"]
 
 [ext_resource type="Script" uid="uid://f4pxf6f0a6ru" path="res://scenes/main_menu.gd" id="1_l6cm7"]
-
-[sub_resource type="SystemFont" id="SystemFont_24c8c"]
-font_names = PackedStringArray("Montserrat")
-font_weight = 700
+[ext_resource type="Texture2D" uid="uid://p8bp5dw1kpov" path="res://assets/textures/procrastinauts.png" id="2_bqqt6"]
+[ext_resource type="FontFile" uid="uid://b6t8o5s7lc2m2" path="res://assets/fonts/Jersey25-Regular.ttf" id="3_wu84c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbct6"]
 bg_color = Color(1, 1, 1, 1)
@@ -28,6 +26,10 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vue75"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8am0p"]
+font = ExtResource("3_wu84c")
+font_size = 80
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_rbct6"]
 thickness = 8
@@ -53,21 +55,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="." unique_id=57708511]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2133673498]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -54.5
-offset_top = 102.0
-offset_right = 54.5
-offset_bottom = 125.0
+offset_left = -320.0
+offset_top = 3.0000002
+offset_right = 940.0
+offset_bottom = 1003.0
 grow_horizontal = 2
-theme_override_fonts/font = SubResource("SystemFont_24c8c")
-theme_override_font_sizes/font_size = 60
-text = "PROCRASTINAUT"
-horizontal_alignment = 1
-vertical_alignment = 1
+scale = Vector2(0.5077604, 0.5077604)
+texture = ExtResource("2_bqqt6")
 
 [node name="MainButtons" type="VBoxContainer" parent="." unique_id=1798158107]
 visible = false
@@ -146,6 +145,7 @@ offset_bottom = 73.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
 text = "OPTIONS"
+label_settings = SubResource("LabelSettings_8am0p")
 horizontal_alignment = 1
 vertical_alignment = 1
 
