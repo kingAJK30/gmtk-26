@@ -3,6 +3,12 @@ extends Node2D
 
 enum GameState { BUILD, LAUNCH, SPACE }
 
+@onready var ui: CanvasLayer = $UI
+@onready var panel_container: PanelContainer = $UI/PanelContainer
+const _5_SEC_COUNTDOWN = preload("uid://n1bnlv5nu4vf")
+@onready var countdown_locator: Node2D = $CountdownLocator
+
+
 @export_group("UI References")
 @export var bottom_ui: CanvasLayer 
 
@@ -42,7 +48,17 @@ var meteor_spawn_timer := 0.0
 var launchpad_position := Vector2.ZERO
 var inventory: Array[PackedScene] = []
 
+@export var game_started := false
+
+func tutorial_done() -> void:
+	panel_container.visible = false
+	var countdown = _5_SEC_COUNTDOWN.instantiate()
+	countdown_locator.add_child(countdown)
+	game_started = true
+
 func _ready() -> void:
+	panel_container.z_index=10
+	
 	if not bottom_ui:
 		for child in get_tree().current_scene.get_children():
 			if child is CanvasLayer and child.has_method("hide_dock"):
@@ -65,6 +81,10 @@ func _ready() -> void:
 	_update_screen_borders()
 
 func _physics_process(delta: float) -> void:
+	
+	if !game_started:
+		return
+
 	match current_state:
 		GameState.BUILD:
 			SoundManager.play_countdown_song()

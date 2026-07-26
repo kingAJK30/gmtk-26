@@ -24,6 +24,10 @@ buses/default_bus_layout="uid://x6674m4apy7j"
 SoundManager="*uid://bigk4kjh3346v"
 DialogueManager="*uid://c3rodes2l3gxb"
 
+[dialogue_manager]
+
+runtime/balloon_path="res://dialogue/balloon.tscn"
+
 [display]
 
 window/size/viewport_width=640

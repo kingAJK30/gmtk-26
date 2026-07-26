@@ -53,3 +53,5 @@ func _ready():
 		
 	var disappear = create_tween()
 	disappear.tween_property(self, "growth", 0, 0.25)
+	await disappear.finished
+	get_parent().get_parent().queue_free()
